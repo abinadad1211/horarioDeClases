@@ -10,11 +10,16 @@ package horarioclases;
  * @author Luis
  */
 public class Reservacion {
-    protected enum diaSemana{Lunes, Martes, Miercoles, Jueves, Viernes, Sabado}; //Falta ver ocmo funcionan los enums
+    protected enum diaSemana{LUNES, MARTES, MIERCOLES, JUEVES, VIERNES, SABADO}; //Falta ver ocmo funcionan los enums
     protected String horaDia; //Se puede hacer enum
-    protected String salon;    
+    protected String salon;  
+    
+    diaSemana diaSemana;
 
-    public Reservacion() { //Agregar constructores
+    public Reservacion(String horaDia, String salon, diaSemana diaSemana) {
+        this.horaDia = horaDia;
+        this.salon = salon;
+        this.diaSemana = diaSemana;
     }
 
     
@@ -34,6 +39,15 @@ public class Reservacion {
         this.salon = salon;
     }
 
+    public diaSemana getDiaSemana() {
+        return diaSemana;
+    }
+
+    public void setDiaSemana(diaSemana diaSemana) {
+        this.diaSemana = diaSemana;
+    }
+
+    
     
 }
 
