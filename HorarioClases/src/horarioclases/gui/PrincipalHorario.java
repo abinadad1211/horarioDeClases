@@ -16,6 +16,7 @@ public class PrincipalHorario extends javax.swing.JFrame {
      */
     public PrincipalHorario() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -39,6 +40,7 @@ public class PrincipalHorario extends javax.swing.JFrame {
         pnlBarra = new javax.swing.JPanel();
         lblCerrar = new javax.swing.JLabel();
         pnlhorario = new javax.swing.JPanel();
+        pnlEscritorio = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -59,6 +61,9 @@ public class PrincipalHorario extends javax.swing.JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btnHorarioMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnHorarioMousePressed(evt);
             }
         });
 
@@ -179,7 +184,7 @@ public class PrincipalHorario extends javax.swing.JFrame {
 
         pblNavegacion.add(btnSalon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 80, 70));
 
-        getContentPane().add(pblNavegacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 72, 695));
+        getContentPane().add(pblNavegacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 70, 695));
 
         pnlBarra.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -195,7 +200,7 @@ public class PrincipalHorario extends javax.swing.JFrame {
         pnlBarraLayout.setHorizontalGroup(
             pnlBarraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlBarraLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(914, Short.MAX_VALUE)
                 .addComponent(lblCerrar)
                 .addContainerGap())
         );
@@ -204,7 +209,7 @@ public class PrincipalHorario extends javax.swing.JFrame {
             .addGroup(pnlBarraLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblCerrar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         getContentPane().add(pnlBarra, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, 940, 50));
@@ -212,15 +217,29 @@ public class PrincipalHorario extends javax.swing.JFrame {
         pnlhorario.setBackground(new java.awt.Color(255, 255, 255));
         pnlhorario.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 48)); // NOI18N
 
+        javax.swing.GroupLayout pnlEscritorioLayout = new javax.swing.GroupLayout(pnlEscritorio);
+        pnlEscritorio.setLayout(pnlEscritorioLayout);
+        pnlEscritorioLayout.setHorizontalGroup(
+            pnlEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 940, Short.MAX_VALUE)
+        );
+        pnlEscritorioLayout.setVerticalGroup(
+            pnlEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 638, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout pnlhorarioLayout = new javax.swing.GroupLayout(pnlhorario);
         pnlhorario.setLayout(pnlhorarioLayout);
         pnlhorarioLayout.setHorizontalGroup(
             pnlhorarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 940, Short.MAX_VALUE)
+            .addComponent(pnlEscritorio)
         );
         pnlhorarioLayout.setVerticalGroup(
             pnlhorarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 651, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlhorarioLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(pnlEscritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26))
         );
 
         getContentPane().add(pnlhorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 44, 940, -1));
@@ -263,6 +282,13 @@ public class PrincipalHorario extends javax.swing.JFrame {
     private void lblCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCerrarMouseClicked
         System.exit(0);
     }//GEN-LAST:event_lblCerrarMouseClicked
+
+    private void btnHorarioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHorarioMousePressed
+        // TODO add your handling code here:
+        CrearHorario Opcion3  = new CrearHorario();
+        pnlEscritorio.add(Opcion3);
+        Opcion3.show();
+    }//GEN-LAST:event_btnHorarioMousePressed
 
     /**
      * @param args the command line arguments
@@ -310,6 +336,7 @@ public class PrincipalHorario extends javax.swing.JFrame {
     private javax.swing.JLabel lblCerrar;
     private javax.swing.JPanel pblNavegacion;
     private javax.swing.JPanel pnlBarra;
+    private javax.swing.JDesktopPane pnlEscritorio;
     private javax.swing.JPanel pnlhorario;
     // End of variables declaration//GEN-END:variables
 }
