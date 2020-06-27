@@ -27,215 +27,399 @@ public class NuevoHorario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel5 = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
+        pnlBarra = new javax.swing.JPanel();
+        lblCerrar = new javax.swing.JLabel();
+        pblNavegacion = new javax.swing.JPanel();
+        btnHorario = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
+        btnProfesor = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jPanel6 = new javax.swing.JPanel();
+        btnExpEdu = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        jPanel7 = new javax.swing.JPanel();
+        btnSalon = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
+        pnlhorario = new javax.swing.JPanel();
+        lblCrearHorario = new javax.swing.JLabel();
+        lblFolioHorario = new javax.swing.JLabel();
+        txtFolioHorario = new javax.swing.JTextField();
+        lblGrupoHorario = new javax.swing.JLabel();
+        txtGrupoHorario = new javax.swing.JTextField();
+        lblProgEdu = new javax.swing.JLabel();
+        txtProgEdu = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        lblAulaHorario = new javax.swing.JLabel();
+        txtAulaHorario = new javax.swing.JTextField();
+        btnAgregarExp = new javax.swing.JButton();
+        btnAgregarExp1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setForeground(java.awt.Color.white);
+        setLocationByPlatform(true);
+        setResizable(false);
 
-        jPanel5.setBackground(new java.awt.Color(24, 82, 157));
+        pnlBarra.setBackground(new java.awt.Color(255, 255, 255));
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+        lblCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/close.png"))); // NOI18N
+
+        javax.swing.GroupLayout pnlBarraLayout = new javax.swing.GroupLayout(pnlBarra);
+        pnlBarra.setLayout(pnlBarraLayout);
+        pnlBarraLayout.setHorizontalGroup(
+            pnlBarraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlBarraLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblCerrar)
+                .addContainerGap())
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 38, Short.MAX_VALUE)
+        pnlBarraLayout.setVerticalGroup(
+            pnlBarraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlBarraLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblCerrar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel1.setBackground(new java.awt.Color(24, 82, 157));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        pblNavegacion.setBackground(new java.awt.Color(24, 82, 157));
+        pblNavegacion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(24, 82, 157));
-        jPanel2.setPreferredSize(new java.awt.Dimension(26, 48));
-        jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnHorario.setBackground(new java.awt.Color(24, 82, 157));
+        btnHorario.setPreferredSize(new java.awt.Dimension(26, 48));
+        btnHorario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel2MouseEntered(evt);
+                btnHorarioMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel2MouseExited(evt);
+                btnHorarioMouseExited(evt);
             }
         });
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/calendarblack.png"))); // NOI18N
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout btnHorarioLayout = new javax.swing.GroupLayout(btnHorario);
+        btnHorario.setLayout(btnHorarioLayout);
+        btnHorarioLayout.setHorizontalGroup(
+            btnHorarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnHorarioLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(jLabel2)
                 .addContainerGap(29, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        btnHorarioLayout.setVerticalGroup(
+            btnHorarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnHorarioLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(jLabel2)
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 80, 70));
+        pblNavegacion.add(btnHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 80, 70));
 
-        jPanel4.setBackground(new java.awt.Color(24, 82, 157));
-        jPanel4.setPreferredSize(new java.awt.Dimension(26, 48));
-        jPanel4.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnProfesor.setBackground(new java.awt.Color(24, 82, 157));
+        btnProfesor.setPreferredSize(new java.awt.Dimension(26, 48));
+        btnProfesor.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel4MouseEntered(evt);
+                btnProfesorMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel4MouseExited(evt);
+                btnProfesorMouseExited(evt);
             }
         });
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/calendarblack.png"))); // NOI18N
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        javax.swing.GroupLayout btnProfesorLayout = new javax.swing.GroupLayout(btnProfesor);
+        btnProfesor.setLayout(btnProfesorLayout);
+        btnProfesorLayout.setHorizontalGroup(
+            btnProfesorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnProfesorLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(jLabel4)
                 .addContainerGap(29, Short.MAX_VALUE))
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        btnProfesorLayout.setVerticalGroup(
+            btnProfesorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnProfesorLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(jLabel4)
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 80, 70));
+        pblNavegacion.add(btnProfesor, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 80, 70));
 
-        jPanel6.setBackground(new java.awt.Color(24, 82, 157));
-        jPanel6.setPreferredSize(new java.awt.Dimension(26, 48));
-        jPanel6.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnExpEdu.setBackground(new java.awt.Color(24, 82, 157));
+        btnExpEdu.setPreferredSize(new java.awt.Dimension(26, 48));
+        btnExpEdu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel6MouseEntered(evt);
+                btnExpEduMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel6MouseExited(evt);
+                btnExpEduMouseExited(evt);
             }
         });
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/calendarblack.png"))); // NOI18N
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
+        javax.swing.GroupLayout btnExpEduLayout = new javax.swing.GroupLayout(btnExpEdu);
+        btnExpEdu.setLayout(btnExpEduLayout);
+        btnExpEduLayout.setHorizontalGroup(
+            btnExpEduLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnExpEduLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(jLabel5)
                 .addContainerGap(29, Short.MAX_VALUE))
         );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
+        btnExpEduLayout.setVerticalGroup(
+            btnExpEduLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnExpEduLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(jLabel5)
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 80, 70));
+        pblNavegacion.add(btnExpEdu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 80, 70));
 
-        jPanel7.setBackground(new java.awt.Color(24, 82, 157));
-        jPanel7.setPreferredSize(new java.awt.Dimension(26, 48));
-        jPanel7.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnSalon.setBackground(new java.awt.Color(24, 82, 157));
+        btnSalon.setPreferredSize(new java.awt.Dimension(26, 48));
+        btnSalon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel7MouseEntered(evt);
+                btnSalonMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel7MouseExited(evt);
+                btnSalonMouseExited(evt);
             }
         });
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/calendarblack.png"))); // NOI18N
 
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
+        javax.swing.GroupLayout btnSalonLayout = new javax.swing.GroupLayout(btnSalon);
+        btnSalon.setLayout(btnSalonLayout);
+        btnSalonLayout.setHorizontalGroup(
+            btnSalonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnSalonLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(jLabel6)
                 .addContainerGap(29, Short.MAX_VALUE))
         );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
+        btnSalonLayout.setVerticalGroup(
+            btnSalonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnSalonLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(jLabel6)
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 80, 70));
+        pblNavegacion.add(btnSalon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 80, 70));
+
+        pnlhorario.setBackground(new java.awt.Color(255, 255, 255));
+        pnlhorario.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 48)); // NOI18N
+
+        lblCrearHorario.setFont(new java.awt.Font("Consolas", 1, 48)); // NOI18N
+        lblCrearHorario.setText("Crear horario");
+
+        lblFolioHorario.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
+        lblFolioHorario.setText("Folio:");
+
+        txtFolioHorario.setEditable(false);
+        txtFolioHorario.setBackground(new java.awt.Color(255, 255, 255));
+        txtFolioHorario.setBorder(null);
+
+        lblGrupoHorario.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
+        lblGrupoHorario.setText("Grupo:");
+
+        txtGrupoHorario.setEditable(false);
+        txtGrupoHorario.setBackground(new java.awt.Color(255, 255, 255));
+        txtGrupoHorario.setBorder(null);
+
+        lblProgEdu.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
+        lblProgEdu.setText("Programa Educativo:");
+
+        txtProgEdu.setEditable(false);
+        txtProgEdu.setBackground(new java.awt.Color(255, 255, 255));
+        txtProgEdu.setBorder(null);
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Experiencia Educativa", "NRC", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
+
+        lblAulaHorario.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
+        lblAulaHorario.setText("Aula:");
+
+        txtAulaHorario.setEditable(false);
+        txtAulaHorario.setBackground(new java.awt.Color(255, 255, 255));
+        txtAulaHorario.setBorder(null);
+
+        btnAgregarExp.setBackground(new java.awt.Color(255, 255, 255));
+        btnAgregarExp.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
+        btnAgregarExp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/add.png"))); // NOI18N
+        btnAgregarExp.setText("Agregar Experiencia Educativa");
+        btnAgregarExp.setActionCommand("  Agregar Experiencia Educativa");
+        btnAgregarExp.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnAgregarExp.setBorderPainted(false);
+        btnAgregarExp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarExpActionPerformed(evt);
+            }
+        });
+
+        btnAgregarExp1.setBackground(new java.awt.Color(255, 255, 255));
+        btnAgregarExp1.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
+        btnAgregarExp1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/remove.png"))); // NOI18N
+        btnAgregarExp1.setText("Eliminar Experiencia Educativa");
+        btnAgregarExp1.setActionCommand("  Agregar Experiencia Educativa");
+        btnAgregarExp1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnAgregarExp1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarExp1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnlhorarioLayout = new javax.swing.GroupLayout(pnlhorario);
+        pnlhorario.setLayout(pnlhorarioLayout);
+        pnlhorarioLayout.setHorizontalGroup(
+            pnlhorarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlhorarioLayout.createSequentialGroup()
+                .addGroup(pnlhorarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(pnlhorarioLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(pnlhorarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlhorarioLayout.createSequentialGroup()
+                                .addComponent(lblFolioHorario)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtFolioHorario, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pnlhorarioLayout.createSequentialGroup()
+                                .addComponent(lblGrupoHorario)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtGrupoHorario, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pnlhorarioLayout.createSequentialGroup()
+                                .addComponent(lblProgEdu)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtProgEdu, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblAulaHorario)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtAulaHorario, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblCrearHorario)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlhorarioLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 903, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(19, Short.MAX_VALUE))
+            .addGroup(pnlhorarioLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnAgregarExp, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(119, 119, 119)
+                .addComponent(btnAgregarExp1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(131, 131, 131))
+        );
+        pnlhorarioLayout.setVerticalGroup(
+            pnlhorarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlhorarioLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(lblCrearHorario)
+                .addGap(22, 22, 22)
+                .addGroup(pnlhorarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblFolioHorario)
+                    .addComponent(txtFolioHorario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pnlhorarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblGrupoHorario)
+                    .addComponent(txtGrupoHorario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pnlhorarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblProgEdu)
+                    .addComponent(txtProgEdu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblAulaHorario)
+                    .addComponent(txtAulaHorario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(44, 44, 44)
+                .addGroup(pnlhorarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAgregarExp, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAgregarExp1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(75, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 1003, Short.MAX_VALUE))
-            .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(pblNavegacion, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(pnlBarra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnlhorario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(pnlBarra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnlhorario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(pblNavegacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jPanel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseEntered
-        jPanel2.setBackground(new java.awt.Color(24, 82, 190));
-    }//GEN-LAST:event_jPanel2MouseEntered
+    private void btnHorarioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHorarioMouseEntered
+        btnHorario.setBackground(new java.awt.Color(24, 82, 190));
+    }//GEN-LAST:event_btnHorarioMouseEntered
 
-    private void jPanel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseExited
-        jPanel2.setBackground(new java.awt.Color(24, 82, 157));
-    }//GEN-LAST:event_jPanel2MouseExited
+    private void btnHorarioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHorarioMouseExited
+        btnHorario.setBackground(new java.awt.Color(24, 82, 157));
+    }//GEN-LAST:event_btnHorarioMouseExited
 
-    private void jPanel4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseEntered
-        jPanel4.setBackground(new java.awt.Color(24, 82, 190));
-    }//GEN-LAST:event_jPanel4MouseEntered
+    private void btnProfesorMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProfesorMouseEntered
+        btnProfesor.setBackground(new java.awt.Color(24, 82, 190));
+    }//GEN-LAST:event_btnProfesorMouseEntered
 
-    private void jPanel4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseExited
-        jPanel4.setBackground(new java.awt.Color(24, 82, 157));
-    }//GEN-LAST:event_jPanel4MouseExited
+    private void btnProfesorMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProfesorMouseExited
+        btnProfesor.setBackground(new java.awt.Color(24, 82, 157));
+    }//GEN-LAST:event_btnProfesorMouseExited
 
-    private void jPanel6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseEntered
-        jPanel6.setBackground(new java.awt.Color(24, 82, 190));
-    }//GEN-LAST:event_jPanel6MouseEntered
+    private void btnExpEduMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExpEduMouseEntered
+        btnExpEdu.setBackground(new java.awt.Color(24, 82, 190));
+    }//GEN-LAST:event_btnExpEduMouseEntered
 
-    private void jPanel6MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseExited
-        jPanel6.setBackground(new java.awt.Color(24, 82, 157));
-    }//GEN-LAST:event_jPanel6MouseExited
+    private void btnExpEduMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExpEduMouseExited
+        btnExpEdu.setBackground(new java.awt.Color(24, 82, 157));
+    }//GEN-LAST:event_btnExpEduMouseExited
 
-    private void jPanel7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseEntered
-        jPanel7.setBackground(new java.awt.Color(24, 82, 190));
-    }//GEN-LAST:event_jPanel7MouseEntered
+    private void btnSalonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalonMouseEntered
+        btnSalon.setBackground(new java.awt.Color(24, 82, 190));
+    }//GEN-LAST:event_btnSalonMouseEntered
 
-    private void jPanel7MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseExited
-        jPanel7.setBackground(new java.awt.Color(24, 82, 157));
-    }//GEN-LAST:event_jPanel7MouseExited
+    private void btnSalonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalonMouseExited
+        btnSalon.setBackground(new java.awt.Color(24, 82, 157));
+    }//GEN-LAST:event_btnSalonMouseExited
+
+    private void btnAgregarExpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarExpActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAgregarExpActionPerformed
+
+    private void btnAgregarExp1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarExp1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAgregarExp1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -271,15 +455,30 @@ public class NuevoHorario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAgregarExp;
+    private javax.swing.JButton btnAgregarExp1;
+    private javax.swing.JPanel btnExpEdu;
+    private javax.swing.JPanel btnHorario;
+    private javax.swing.JPanel btnProfesor;
+    private javax.swing.JPanel btnSalon;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lblAulaHorario;
+    private javax.swing.JLabel lblCerrar;
+    private javax.swing.JLabel lblCrearHorario;
+    private javax.swing.JLabel lblFolioHorario;
+    private javax.swing.JLabel lblGrupoHorario;
+    private javax.swing.JLabel lblProgEdu;
+    private javax.swing.JPanel pblNavegacion;
+    private javax.swing.JPanel pnlBarra;
+    private javax.swing.JPanel pnlhorario;
+    private javax.swing.JTextField txtAulaHorario;
+    private javax.swing.JTextField txtFolioHorario;
+    private javax.swing.JTextField txtGrupoHorario;
+    private javax.swing.JTextField txtProgEdu;
     // End of variables declaration//GEN-END:variables
 }
