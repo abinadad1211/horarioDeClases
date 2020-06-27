@@ -5,6 +5,10 @@
  */
 package horarioclases.gui;
 
+import javax.swing.JInternalFrame;
+import javax.swing.plaf.InternalFrameUI;
+import javax.swing.plaf.basic.BasicInternalFrameUI;
+
 /**
  *
  * @author Luis
@@ -16,6 +20,12 @@ public class CrearHorario extends javax.swing.JInternalFrame {
      */
     public CrearHorario() {
         initComponents();
+        
+        //Quitar la barra de titulo
+        BasicInternalFrameUI bi = (BasicInternalFrameUI)this.getUI();
+        bi.setNorthPane(null);
+        
+
     }
 
     /**
@@ -41,6 +51,8 @@ public class CrearHorario extends javax.swing.JInternalFrame {
         txtGrupoHorario = new javax.swing.JTextField();
         lblProgEdu = new javax.swing.JLabel();
         txtProgEdu = new javax.swing.JTextField();
+
+        setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -183,7 +195,7 @@ public class CrearHorario extends javax.swing.JInternalFrame {
                     .addComponent(btnAgregarExp1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
