@@ -165,6 +165,9 @@ public class PrincipalHorario extends javax.swing.JFrame {
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btnSalonMouseExited(evt);
             }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnSalonMousePressed(evt);
+            }
         });
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/calendarblack.png"))); // NOI18N
@@ -300,6 +303,13 @@ public class PrincipalHorario extends javax.swing.JFrame {
         pnlEscritorio.add(Opcion3);
         Opcion3.show();
     }//GEN-LAST:event_btnExpEduMousePressed
+
+    private void btnSalonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalonMousePressed
+        // TODO add your handling code here:
+        ConsultaSalon Opcion4  = new ConsultaSalon();
+        pnlEscritorio.add(Opcion4);
+        Opcion4.show();
+    }//GEN-LAST:event_btnSalonMousePressed
 
     /**
      * @param args the command line arguments
