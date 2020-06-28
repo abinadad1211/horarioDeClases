@@ -4,102 +4,43 @@
  * and open the template in the editor.
  */
 package horarioclases;
-import java.util.*; 
+
+import java.sql.*;
 
 /**
  *
  * @author Alexis
  */
 
-
-import java.util.Scanner;
-
-class Curso{
-  public static void main (String[] args){
-  Scanner in = new Scanner(System.in);
-
-  int busqueda = 0;
-  
-      Lista nuevo = new Lista();
-      nuevo.insertar("1");
-      nuevo.insertar("2");
-      nuevo.insertar("3");
-      nuevo.insertar("4");
-      System.out.print("Inserte el NRC a buscar: ");
-      int NrcBusqueda = in.nextInt();
-      busqueda = NrcBusqueda - 1;
-      nuevo.buscarIndice(busqueda);
-      //System.out.print(nuevo.imprimir());
-  }
-}
-
-class Lista
-{
-    public static Nodo nodoInicial;
-
-    public static void insertar(String valor)
-    {
-        Nodo nodo = new Nodo();
-        nodo.dato = valor;
-        if(nodoInicial == null)
-        {
-            nodoInicial = nodo;
-        }
-
-        else
-        {
-            Nodo ultimoNodo = nodoInicial;
-            //Encontrar el ultimo nodo
-            while(ultimoNodo.puntero != null) //Cambiar if por while
-            {            
-                ultimoNodo = ultimoNodo.puntero;
+public class Curso{
+    
+    public static void main (String[] args){
+     
+        String url = "jdbc:mysql://lis401.cbjqnknzqkto.us-east-2.rds.amazonaws.com:3306/horario_de_clases";
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            // Creamos el objeto conexion
+            Connection conexion = (Connection) DriverManager.getConnection(url, "admin", "-Lis401-samsung1");
+            // Creamos un objeto Statement
+            Statement instruccion = conexion.createStatement();
+            // Creamos el query
+            String sql = "SELECT nrc, exp_educativa, profesor.nombre FROM curso INNER JOIN profesor ON curso.profesor = profesor.id_profesor;";
+            ResultSet result = instruccion.executeQuery(sql);
+            System.out.println("NRC\tEXP\tPROFESOR");
+            while (result.next()) {
+                /*System.out.print("ID:" + result.getString(1));
+                System.out.print(" NOMBRE:" + result.getString(2));
+                System.out.println(" PRIMER APELLIDO:" + result.getString(3));*/
+                System.out.println(result.getString(1)+"\t"+result.getString(2)+"\t"+result.getString(3));
             }
-            //Asignar el nuevo nodo al puntero del ultimo nodo
-            ultimoNodo.puntero = nodo; 
+            // Cerrar cada uno de los objetos utilizados
+            result.close();
+            instruccion.close();
+            conexion.close();
+        } 
+        catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
         }
-    } //Fin Metodo insertar
-
-    public static String imprimir()
-    {
-        Nodo tmp = nodoInicial;
-        //Nodo apuntador = puntero;
-        String resultado="";
-        while(tmp != null)
-        {
-            resultado = resultado +  "\nNodo: "+tmp.dato;
-            tmp = tmp.puntero;
-        }
-        return resultado;
-    }
-
-    public static void buscarIndice(int indicebuscado)
-    {
-        Nodo nodo = nodoInicial;
-
-        int cont = 0;
-        
-        while((nodo != null) && (cont != indicebuscado ))
-        {
-            nodo = nodo.puntero;
-            cont++;
-        }
-        if(nodo==null)
-        {
-            System.out.println("El elemento no se encuentra en la lista");
-        }
-        else
-        {
-            System.out.println("El elemento si se encuentra en el sistema, los datos son:\n\nNRC:" + nodo.dato + "\nMateria: Requerimientos de Software" + "\nMaestro: Dr. Patricia Martinez Moreno");
-        }
-
-    }
-
-
 }
-
-class Nodo
-{
-    public String dato;
-    public Nodo puntero;
-
+      
 }
