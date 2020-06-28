@@ -7,11 +7,7 @@ package horarioclases.gui;
 
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
-//import com.mysql.jdbc.Driver;
 import java.sql.*;
-//import java.sql.DriverManager;
-//import java.sql.ResultSet;
-//import java.sql.SQLException;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 import javax.swing.plaf.InternalFrameUI;
@@ -24,7 +20,7 @@ import javax.swing.table.TableColumn;
  * @author Alexis
  */
 public class ConsultaExpEdu extends javax.swing.JInternalFrame {
-
+    
    Connection con = null;
    Statement stmt = null;
    String titulos[] = {"NRC","Experiencia Educativa","Profesor"};
@@ -180,6 +176,8 @@ public class ConsultaExpEdu extends javax.swing.JInternalFrame {
  
         //INICIA CONSULTA SQL
 
+        
+        
         String url = "jdbc:mysql://lis401.cbjqnknzqkto.us-east-2.rds.amazonaws.com:3306/horario_de_clases";
 
         try {
@@ -203,14 +201,17 @@ public class ConsultaExpEdu extends javax.swing.JInternalFrame {
                 columna1.setMaxWidth(75);
                 TableColumn columna2 = tblExpEdu.getColumn("Experiencia Educativa");
                 TableColumn columna3 = tblExpEdu.getColumn("Profesor");
-                               
+        
+            rs.close();
+            instruccion.close();
+            conexion.close();       
         }
         catch (ClassNotFoundException | SQLException e) {
             
             JOptionPane.showMessageDialog(null,"Error al extraer los datos de la tabla");
         }
 
-//AQUI TERMINA
+//AQUI TERMINA 
     }//GEN-LAST:event_btnConsultarExpEduActionPerformed
 
     private void btnConsultarNRCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarNRCActionPerformed
