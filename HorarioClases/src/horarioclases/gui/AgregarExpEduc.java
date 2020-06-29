@@ -5,6 +5,8 @@
  */
 package horarioclases.gui;
 
+import javax.swing.plaf.basic.BasicInternalFrameUI;
+
 /**
  *
  * @author ADMIN
@@ -16,6 +18,11 @@ public class AgregarExpEduc extends javax.swing.JInternalFrame {
      */
     public AgregarExpEduc() {
         initComponents();
+    
+        //Quitar la barra de titulo
+        BasicInternalFrameUI bi = (BasicInternalFrameUI)this.getUI();
+        bi.setNorthPane(null);
+
     }
 
     /**
