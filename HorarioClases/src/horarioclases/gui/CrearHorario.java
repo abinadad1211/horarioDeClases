@@ -228,10 +228,7 @@ public class CrearHorario extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnAgregarExp1ActionPerformed
 
     private void btnAgregarExpMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarExpMousePressed
-        // TODO add your handling code here:
-        AgregarExpEduc Opcion1  = new AgregarExpEduc();
-        jPanel1.add(Opcion1);
-        Opcion1.show();
+        
     }//GEN-LAST:event_btnAgregarExpMousePressed
 
 
