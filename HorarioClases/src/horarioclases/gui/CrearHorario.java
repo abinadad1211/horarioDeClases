@@ -94,6 +94,11 @@ public class CrearHorario extends javax.swing.JInternalFrame {
         btnAgregarExp.setActionCommand("  Agregar Experiencia Educativa");
         btnAgregarExp.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btnAgregarExp.setBorderPainted(false);
+        btnAgregarExp.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnAgregarExpMousePressed(evt);
+            }
+        });
         btnAgregarExp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarExpActionPerformed(evt);
@@ -221,6 +226,13 @@ public class CrearHorario extends javax.swing.JInternalFrame {
     private void btnAgregarExp1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarExp1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAgregarExp1ActionPerformed
+
+    private void btnAgregarExpMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarExpMousePressed
+        // TODO add your handling code here:
+        AgregarExpEduc Opcion1  = new AgregarExpEduc();
+        jPanel1.add(Opcion1);
+        Opcion1.show();
+    }//GEN-LAST:event_btnAgregarExpMousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
