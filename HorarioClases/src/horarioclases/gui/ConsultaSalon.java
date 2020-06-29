@@ -67,7 +67,7 @@ public class ConsultaSalon extends javax.swing.JInternalFrame {
 
         btnConsultarSalon.setBackground(new java.awt.Color(255, 255, 255));
         btnConsultarSalon.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
-        btnConsultarSalon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cursos.png"))); // NOI18N
+        btnConsultarSalon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/books (2).png"))); // NOI18N
         btnConsultarSalon.setText("Consultar Salón");
         btnConsultarSalon.setActionCommand("  ");
         btnConsultarSalon.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
