@@ -1,21 +1,21 @@
 package horarioclases.gui;
 
+import com.mxrck.autocompleter.TextAutoCompleter;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
+import horarioclases.Curso;
 import java.sql.*;
-import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
-import javax.swing.plaf.InternalFrameUI;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
 public class ConsultaExpEdu extends javax.swing.JInternalFrame {
+    protected Statement conexionBD = null;
+    protected ResultSet consulta = null;
     
-   Connection con = null;
-   Statement stmt = null;
    String titulos[] = {"NRC","Experiencia Educativa","Profesor"};
-   String fila[] = new String [7]; //Ese [7] qué significa? 
+   String fila[] = new String [3]; //Número de columnas equivalentes en ambas tablas (base de datos y el modulo de consulta)
    DefaultTableModel modelo;
 
    public ConsultaExpEdu() {
@@ -24,6 +24,45 @@ public class ConsultaExpEdu extends javax.swing.JInternalFrame {
         //Quitar la barra de titulo
         BasicInternalFrameUI bi = (BasicInternalFrameUI)this.getUI();
         bi.setNorthPane(null);
+        
+//INICIA CARGA DE MODULO
+        TextAutoCompleter prediccionCampoExpEdu = new TextAutoCompleter(txtExpEdu);
+        TextAutoCompleter prediccionCampoNRC = new TextAutoCompleter(txtNRC);
+
+        //CONEXIÓN CON LA BASE DE DATOS
+        Connection DatosDeModuloConsulta = Curso.GetConection();
+        //INICIA LA CONSULTA
+            try{
+                conexionBD = (Statement)DatosDeModuloConsulta.createStatement();
+                consulta = conexionBD.executeQuery("SELECT nrc, exp_educativa, CONCAT_WS(\" \",profesor.nombre, profesor.paterno, profesor.materno) AS nombre_completo FROM curso INNER JOIN profesor ON curso.profesor = profesor.id_profesor;");
+                modelo = new DefaultTableModel(null,titulos);
+                
+                //ASIGNACION DE DATOS
+                    while (consulta.next()){
+                    //CONSULTA DE AUTOCOMPLEMENTACIÓN
+                    prediccionCampoNRC.addItem(consulta.getString("nrc")); 
+                    prediccionCampoExpEdu.addItem(consulta.getString("exp_educativa"));
+                    //CONSULTA DE DATOS EN TABLA
+                    fila[0] = consulta.getString("nrc");
+                    fila[1] = consulta.getString("exp_educativa");
+                    fila[2] = consulta.getString("nombre_completo");
+                    modelo.addRow(fila);
+                    }
+                //LLENADO DE TABLA
+                tblExpEdu.setModel(modelo);
+                TableColumn columna1 = tblExpEdu.getColumn("NRC");
+                columna1.setMaxWidth(75);
+                TableColumn columna2 = tblExpEdu.getColumn("Experiencia Educativa");
+                TableColumn columna3 = tblExpEdu.getColumn("Profesor");
+
+                //CIERRE DE VARIABLES
+                consulta.close();
+                conexionBD.close();
+                
+            }catch(SQLException de){
+                    JOptionPane.showMessageDialog(this, de.getMessage());
+            }
+//FINALIZA CARGA DE MODULO
 
    }
 
@@ -31,21 +70,24 @@ public class ConsultaExpEdu extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        FondoModuloConsulta = new javax.swing.JPanel();
+        ResultadoModuloConsulta = new javax.swing.JScrollPane();
         tblExpEdu = new javax.swing.JTable();
         lblConsultaExpEdu = new javax.swing.JLabel();
         lblNRC = new javax.swing.JLabel();
-        btnConsultarExpEdu = new javax.swing.JButton();
-        btnConsultarNRC = new javax.swing.JButton();
+        btnConsultaNRC = new javax.swing.JButton();
+        txtExpEdu = new javax.swing.JTextField();
+        lblExpEdu = new javax.swing.JLabel();
         txtNRC = new javax.swing.JTextField();
+        btnConsultaExpEdu = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         setForeground(java.awt.Color.black);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        FondoModuloConsulta.setBackground(new java.awt.Color(255, 255, 255));
+        FondoModuloConsulta.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         tblExpEdu.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -66,7 +108,7 @@ public class ConsultaExpEdu extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tblExpEdu);
+        ResultadoModuloConsulta.setViewportView(tblExpEdu);
 
         lblConsultaExpEdu.setFont(new java.awt.Font("Consolas", 1, 48)); // NOI18N
         lblConsultaExpEdu.setText("Consultar Experiencias Educativas");
@@ -74,140 +116,168 @@ public class ConsultaExpEdu extends javax.swing.JInternalFrame {
         lblNRC.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
         lblNRC.setText("NRC:");
 
-        btnConsultarExpEdu.setBackground(new java.awt.Color(255, 255, 255));
-        btnConsultarExpEdu.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
-        btnConsultarExpEdu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cursos.png"))); // NOI18N
-        btnConsultarExpEdu.setText("Consultar Experiencias Educativas");
-        btnConsultarExpEdu.setActionCommand("  Agregar Experiencia Educativa");
-        btnConsultarExpEdu.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        btnConsultarExpEdu.addActionListener(new java.awt.event.ActionListener() {
+        btnConsultaNRC.setBackground(new java.awt.Color(255, 255, 255));
+        btnConsultaNRC.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
+        btnConsultaNRC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cursos.png"))); // NOI18N
+        btnConsultaNRC.setText("Consultar NRC");
+        btnConsultaNRC.setActionCommand("  Agregar Experiencia Educativa");
+        btnConsultaNRC.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnConsultaNRC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnConsultarExpEduActionPerformed(evt);
+                btnConsultaNRCActionPerformed(evt);
             }
         });
 
-        btnConsultarNRC.setBackground(new java.awt.Color(255, 255, 255));
-        btnConsultarNRC.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
-        btnConsultarNRC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cursos.png"))); // NOI18N
-        btnConsultarNRC.setText("Consultar NRC");
-        btnConsultarNRC.setActionCommand("  Agregar Experiencia Educativa");
-        btnConsultarNRC.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        btnConsultarNRC.addActionListener(new java.awt.event.ActionListener() {
+        lblExpEdu.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
+        lblExpEdu.setText("Experiencia Educativa:");
+
+        btnConsultaExpEdu.setBackground(new java.awt.Color(255, 255, 255));
+        btnConsultaExpEdu.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
+        btnConsultaExpEdu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cursos.png"))); // NOI18N
+        btnConsultaExpEdu.setText("Buscar Experiencia Educativa");
+        btnConsultaExpEdu.setActionCommand("  Agregar Experiencia Educativa");
+        btnConsultaExpEdu.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnConsultaExpEdu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnConsultarNRCActionPerformed(evt);
+                btnConsultaExpEduActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout FondoModuloConsultaLayout = new javax.swing.GroupLayout(FondoModuloConsulta);
+        FondoModuloConsulta.setLayout(FondoModuloConsultaLayout);
+        FondoModuloConsultaLayout.setHorizontalGroup(
+            FondoModuloConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(FondoModuloConsultaLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(FondoModuloConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(FondoModuloConsultaLayout.createSequentialGroup()
+                        .addGroup(FondoModuloConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblConsultaExpEdu)
+                            .addGroup(FondoModuloConsultaLayout.createSequentialGroup()
+                                .addGap(126, 126, 126)
+                                .addComponent(lblNRC)
                                 .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(lblNRC)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(txtNRC, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(lblConsultaExpEdu)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(127, 127, 127)
-                                .addComponent(btnConsultarNRC, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(118, 118, 118)
-                                .addComponent(btnConsultarExpEdu)))
-                        .addGap(0, 54, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addContainerGap())
+                                .addComponent(txtNRC)
+                                .addGap(451, 451, 451)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(FondoModuloConsultaLayout.createSequentialGroup()
+                        .addComponent(lblExpEdu)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtExpEdu, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(551, 551, 551))))
+            .addGroup(FondoModuloConsultaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(FondoModuloConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(FondoModuloConsultaLayout.createSequentialGroup()
+                        .addComponent(ResultadoModuloConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 910, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(FondoModuloConsultaLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnConsultaNRC, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(150, 150, 150)
+                        .addComponent(btnConsultaExpEdu, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(152, 152, 152))))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        FondoModuloConsultaLayout.setVerticalGroup(
+            FondoModuloConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(FondoModuloConsultaLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(lblConsultaExpEdu)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblNRC)
-                    .addComponent(txtNRC, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(16, 16, 16)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnConsultarExpEdu, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnConsultarNRC, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1)
+                .addGroup(FondoModuloConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtNRC, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblNRC))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(FondoModuloConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtExpEdu, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblExpEdu))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addGroup(FondoModuloConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnConsultaNRC, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnConsultaExpEdu, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addComponent(ResultadoModuloConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
+        getContentPane().add(FondoModuloConsulta, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 941, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnConsultarExpEduActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarExpEduActionPerformed
- 
-        //INICIA CONSULTA SQL        
-        String url = "jdbc:mysql://lis401.cbjqnknzqkto.us-east-2.rds.amazonaws.com:3306/horario_de_clases";
-
+    private void btnConsultaNRCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaNRCActionPerformed
+        // CODIGO INICIO
+        String NrcIngresado = txtNRC.getText();        
+        Connection consultaNRC = Curso.GetConection();
+        
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            java.sql.Connection conexion = (java.sql.Connection) DriverManager.getConnection(url, "admin", "-Lis401-samsung1"); //Sustituir valores por variables
-               java.sql.Statement instruccion = conexion.createStatement();
-               String sql = "SELECT nrc, exp_educativa, CONCAT_WS(\" \",profesor.nombre, profesor.paterno, profesor.materno) AS nombre_completo FROM curso INNER JOIN profesor ON curso.profesor = profesor.id_profesor;";
-               ResultSet rs = instruccion.executeQuery(sql);
-               modelo = new DefaultTableModel(null,titulos);
+            conexionBD = (Statement)consultaNRC.createStatement();
+            consulta = conexionBD.executeQuery("SELECT nrc, exp_educativa, CONCAT_WS(' ',profesor.nombre, profesor.paterno, profesor.materno) AS nombre_completo FROM curso INNER JOIN profesor ON curso.profesor = profesor.id_profesor WHERE nrc = '"+NrcIngresado+"';");               
+            modelo = new DefaultTableModel(null,titulos);
             
-               while(rs.next()) {
-                   
-                   fila[0] = rs.getString("nrc");
-                   fila[1] = rs.getString("exp_educativa");
-                   fila[2] = rs.getString("nombre_completo");
-                   
+               while(consulta.next()) {
+                   fila[0] = consulta.getString("nrc");
+                   fila[1] = consulta.getString("exp_educativa");
+                   fila[2] = consulta.getString("nombre_completo");
                    modelo.addRow(fila);     
                }
-               tblExpEdu.setModel(modelo);
+                tblExpEdu.setModel(modelo);
                 TableColumn columna1 = tblExpEdu.getColumn("NRC");
                 columna1.setMaxWidth(75);
                 TableColumn columna2 = tblExpEdu.getColumn("Experiencia Educativa");
                 TableColumn columna3 = tblExpEdu.getColumn("Profesor");
         
-            rs.close();
-            instruccion.close();
-            conexion.close();       
+            consulta.close();
+            consulta.close();      
+        }catch (SQLException e) {
+           JOptionPane.showMessageDialog(null,"Error al extraer los datos de la tabla");
         }
-        catch (ClassNotFoundException | SQLException e) {
-            
-            JOptionPane.showMessageDialog(null,"Error al extraer los datos de la tabla");
-        }
-//AQUI TERMINA 
-    }//GEN-LAST:event_btnConsultarExpEduActionPerformed
+        txtNRC.setText("");
+        //CODIGO FIN
+    }//GEN-LAST:event_btnConsultaNRCActionPerformed
 
-    private void btnConsultarNRCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarNRCActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnConsultarNRCActionPerformed
+    private void btnConsultaExpEduActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaExpEduActionPerformed
+        // CODIGO INICIO
+        String ExpEduIngresada = txtExpEdu.getText();        
+        Connection consultaExpEdu = Curso.GetConection();
+        
+        try {
+            conexionBD = (Statement)consultaExpEdu.createStatement();
+            consulta = conexionBD.executeQuery("SELECT nrc, exp_educativa, CONCAT_WS(' ',profesor.nombre, profesor.paterno, profesor.materno) AS nombre_completo FROM curso INNER JOIN profesor ON curso.profesor = profesor.id_profesor WHERE exp_educativa = '"+ExpEduIngresada+"';");               
+            modelo = new DefaultTableModel(null,titulos);
+            
+               while(consulta.next()) {
+                   fila[0] = consulta.getString("nrc");
+                   fila[1] = consulta.getString("exp_educativa");
+                   fila[2] = consulta.getString("nombre_completo");
+                   modelo.addRow(fila);     
+               }
+                tblExpEdu.setModel(modelo);
+                TableColumn columna1 = tblExpEdu.getColumn("NRC");
+                columna1.setMaxWidth(75);
+                TableColumn columna2 = tblExpEdu.getColumn("Experiencia Educativa");
+                TableColumn columna3 = tblExpEdu.getColumn("Profesor");
+        
+            consulta.close();
+            consulta.close();      
+        }catch (SQLException e) {
+        JOptionPane.showMessageDialog(null,"Error al extraer los datos de la tabla");
+        }
+        txtExpEdu.setText("");
+        //CODIGO FIN
+    }//GEN-LAST:event_btnConsultaExpEduActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnConsultarExpEdu;
-    private javax.swing.JButton btnConsultarNRC;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel FondoModuloConsulta;
+    private javax.swing.JScrollPane ResultadoModuloConsulta;
+    private javax.swing.JButton btnConsultaExpEdu;
+    private javax.swing.JButton btnConsultaNRC;
     private javax.swing.JLabel lblConsultaExpEdu;
+    private javax.swing.JLabel lblExpEdu;
     private javax.swing.JLabel lblNRC;
     private javax.swing.JTable tblExpEdu;
+    private javax.swing.JTextField txtExpEdu;
     private javax.swing.JTextField txtNRC;
     // End of variables declaration//GEN-END:variables
 }
