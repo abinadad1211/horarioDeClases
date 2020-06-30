@@ -5,17 +5,27 @@
  */
 package horarioclases.gui;
 
+import com.mxrck.autocompleter.TextAutoCompleter;
+import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.Statement;
+import conexionBaseDatos.ConectarBD;
+import java.sql.ResultSet;
+
 /**
  *
  * @author Luis
  */
 public class AgregarExpEdu extends javax.swing.JFrame {
-
-    /**
-     * Creates new form Agregar
-     */
+    protected Statement conexionBD = null;
+    protected ResultSet consulta = null;
+    
     public AgregarExpEdu() {
         initComponents();
+        
+        TextAutoCompleter prediccionExpEdu = new TextAutoCompleter(txtExpEduAgregar);
+        TextAutoCompleter prediccionProfesor = new TextAutoCompleter(txtProfesorAgregar);
+        
+        Connection ConexionBD = ConectarBD.GetConnection();
     }
 
     /**
@@ -33,11 +43,11 @@ public class AgregarExpEdu extends javax.swing.JFrame {
         lblCrearHorario = new javax.swing.JLabel();
         btnAgregarExp = new javax.swing.JButton();
         lblNRCAgregarEE = new javax.swing.JLabel();
-        txtFolioHorario = new javax.swing.JTextField();
+        txtNRCAgregar = new javax.swing.JTextField();
         lblExpEduAgregar = new javax.swing.JLabel();
-        txtGrupoHorario = new javax.swing.JTextField();
+        txtExpEduAgregar = new javax.swing.JTextField();
         lblProgEdu = new javax.swing.JLabel();
-        txtProgEdu = new javax.swing.JTextField();
+        txtProfesorAgregar = new javax.swing.JTextField();
         lblProgEdu1 = new javax.swing.JLabel();
         lblProgEdu2 = new javax.swing.JLabel();
         lblProgEdu3 = new javax.swing.JLabel();
@@ -85,27 +95,27 @@ public class AgregarExpEdu extends javax.swing.JFrame {
         lblNRCAgregarEE.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
         lblNRCAgregarEE.setText("NRC:");
 
-        txtFolioHorario.setEditable(false);
-        txtFolioHorario.setBackground(new java.awt.Color(255, 255, 255));
-        txtFolioHorario.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
-        txtFolioHorario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txtFolioHorario.setEnabled(false);
+        txtNRCAgregar.setEditable(false);
+        txtNRCAgregar.setBackground(new java.awt.Color(255, 255, 255));
+        txtNRCAgregar.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
+        txtNRCAgregar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtNRCAgregar.setEnabled(false);
 
         lblExpEduAgregar.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
         lblExpEduAgregar.setText("Experiencia Educativa:");
 
-        txtGrupoHorario.setEditable(false);
-        txtGrupoHorario.setBackground(new java.awt.Color(255, 255, 255));
-        txtGrupoHorario.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
-        txtGrupoHorario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtExpEduAgregar.setEditable(false);
+        txtExpEduAgregar.setBackground(new java.awt.Color(255, 255, 255));
+        txtExpEduAgregar.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
+        txtExpEduAgregar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         lblProgEdu.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
         lblProgEdu.setText("Profesor:");
 
-        txtProgEdu.setEditable(false);
-        txtProgEdu.setBackground(new java.awt.Color(255, 255, 255));
-        txtProgEdu.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
-        txtProgEdu.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtProfesorAgregar.setEditable(false);
+        txtProfesorAgregar.setBackground(new java.awt.Color(255, 255, 255));
+        txtProfesorAgregar.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
+        txtProfesorAgregar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         lblProgEdu1.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
         lblProgEdu1.setText("Hora inicio");
@@ -229,15 +239,15 @@ public class AgregarExpEdu extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addComponent(lblExpEduAgregar)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(txtGrupoHorario))
+                                    .addComponent(txtExpEduAgregar))
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addComponent(lblNRCAgregarEE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(txtFolioHorario, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtNRCAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addComponent(lblProgEdu)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(txtProgEdu)))
+                                    .addComponent(txtProfesorAgregar)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(lblAulaHorario)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -279,15 +289,15 @@ public class AgregarExpEdu extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNRCAgregarEE)
-                    .addComponent(txtFolioHorario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNRCAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblExpEduAgregar)
-                    .addComponent(txtGrupoHorario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtExpEduAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblProgEdu)
-                    .addComponent(txtProgEdu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtProfesorAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnAgregarExp, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(11, 11, 11)
@@ -446,8 +456,8 @@ public class AgregarExpEdu extends javax.swing.JFrame {
     private javax.swing.JLabel lblProgEdu7;
     private javax.swing.JLabel lblProgEdu8;
     private javax.swing.JTextField txtAulaHorario;
-    private javax.swing.JTextField txtFolioHorario;
-    private javax.swing.JTextField txtGrupoHorario;
-    private javax.swing.JTextField txtProgEdu;
+    private javax.swing.JTextField txtExpEduAgregar;
+    private javax.swing.JTextField txtNRCAgregar;
+    private javax.swing.JTextField txtProfesorAgregar;
     // End of variables declaration//GEN-END:variables
 }

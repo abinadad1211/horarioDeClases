@@ -17,7 +17,7 @@ public class Curso{
     //protected Statement stmt = null;
    
     
-    public static Connection GetConection(){
+    public static Connection GetConnection(){
         Connection conexion = null;
         try {
             Class.forName("com.mysql.jdbc.Driver");

@@ -30,7 +30,7 @@ public class ConsultaExpEdu extends javax.swing.JInternalFrame {
         TextAutoCompleter prediccionCampoNRC = new TextAutoCompleter(txtNRC);
 
         //CONEXIÓN CON LA BASE DE DATOS
-        Connection DatosDeModuloConsulta = Curso.GetConection();
+        Connection DatosDeModuloConsulta = Curso.GetConnection();
         //INICIA LA CONSULTA
             try{
                 conexionBD = (Statement)DatosDeModuloConsulta.createStatement();
@@ -208,7 +208,7 @@ public class ConsultaExpEdu extends javax.swing.JInternalFrame {
     private void btnConsultaNRCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaNRCActionPerformed
         // CODIGO INICIO
         String NrcIngresado = txtNRC.getText();        
-        Connection consultaNRC = Curso.GetConection();
+        Connection consultaNRC = Curso.GetConnection();
         
         try {
             conexionBD = (Statement)consultaNRC.createStatement();
@@ -239,7 +239,7 @@ public class ConsultaExpEdu extends javax.swing.JInternalFrame {
     private void btnConsultaExpEduActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaExpEduActionPerformed
         // CODIGO INICIO
         String ExpEduIngresada = txtExpEdu.getText();        
-        Connection consultaExpEdu = Curso.GetConection();
+        Connection consultaExpEdu = Curso.GetConnection();
         
         try {
             conexionBD = (Statement)consultaExpEdu.createStatement();
