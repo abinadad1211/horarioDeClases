@@ -1,9 +1,9 @@
-package Vista;
+package horarioclases.gui;
 
 import com.mxrck.autocompleter.TextAutoCompleter;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
-import Modelo.ConectarBD;
+import conexionBaseDatos.ConectarBD;
 import java.sql.*;
 import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;

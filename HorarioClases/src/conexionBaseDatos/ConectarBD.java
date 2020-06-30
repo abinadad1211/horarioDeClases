@@ -1,4 +1,4 @@
-package Modelo;
+package conexionBaseDatos;
 
 import java.sql.*;
 import javax.swing.JOptionPane;
