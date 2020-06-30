@@ -9,8 +9,8 @@ public class ConectarBD {
     private static final String contrasenia="-Lis401-samsung1";
     private static final String url="jdbc:mysql://lis401.cbjqnknzqkto.us-east-2.rds.amazonaws.com:3306/horario_de_clases";
 
-    public static Connection GetConnection(){
-        Connection conexion = null;
+    public static com.mysql.jdbc.Connection GetConnection(){
+        com.mysql.jdbc.Connection conexion = null;
         try {
             Class.forName("com.mysql.jdbc.Driver");
             String servidor = "jdbc:mysql://lis401.cbjqnknzqkto.us-east-2.rds.amazonaws.com:3306/horario_de_clases";
