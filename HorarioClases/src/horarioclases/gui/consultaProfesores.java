@@ -4,11 +4,15 @@ import com.mxrck.autocompleter.TextAutoCompleter;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
 import conexionBaseDatos.ConectarBD;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.sql.*;
 import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import javax.swing.table.TableRowSorter;
 /**
  *
  * @author Abinadad
@@ -208,12 +212,14 @@ public class consultaProfesores extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscarProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarProfesorActionPerformed
-        String nombreProfesorIngresado = txtNombreProfesor.getText();   
+        String nombreProfesorIngresado = txtNombreProfesor.getText();  
+       
         Connection consultaProfesor = ConectarBD.GetConnection();
         
             try {
-            conexionBD = (Statement)consultaProfesor.createStatement();
-            consulta = conexionBD.executeQuery("SELECT c.exp_educativa, c.nrc, r.dia_clases_clases, r.horarios_clases FROM profesor p INNER JOIN curso c ON p.id_profesor = c.profesor INNER JOIN reserva r ON c.nrc = r.nrc_reserva WHERE p.nombre ='"+nombreProfesorIngresado+"';");               
+            conexionBD = (Statement)consultaProfesor.createStatement();                                                                                                                                                                             //ordenador.setRowFilter(RowFilter.regexFilter("(?i)" + text));
+            consulta = conexionBD.executeQuery("SELECT c.exp_educativa, c.nrc, r.dia_clases_clases, r.horarios_clases FROM profesor p INNER JOIN curso c ON p.id_profesor = c.profesor INNER JOIN reserva r ON c.nrc = r.nrc_reserva WHERE CONCAT(UCASE(LEFT(p.nombre, 1)), LCASE(SUBSTRING(p.nombre, 2))) like '"+nombreProfesorIngresado+"';");               
+            
             modelo = new DefaultTableModel(null,titulos);
             
                 while(consulta.next()) {
@@ -263,6 +269,7 @@ public class consultaProfesores extends javax.swing.JInternalFrame {
         }
         txtNombreProfesor.setText("");
     }//GEN-LAST:event_btnBuscarProfesorActionPerformed
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
