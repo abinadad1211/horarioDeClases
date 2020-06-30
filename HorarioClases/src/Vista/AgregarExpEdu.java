@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package horarioclases.gui;
+package Vista;
 
 import com.mxrck.autocompleter.TextAutoCompleter;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
-import conexionBaseDatos.ConectarBD;
+import Modelo.ConectarBD;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
@@ -118,14 +118,12 @@ public class AgregarExpEdu extends javax.swing.JFrame {
         lblExpEduAgregar.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
         lblExpEduAgregar.setText("Experiencia Educativa:");
 
-        txtExpEduAgregar.setBackground(new java.awt.Color(255, 255, 255));
         txtExpEduAgregar.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
         txtExpEduAgregar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         lblProgEdu.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
         lblProgEdu.setText("Profesor:");
 
-        txtProfesorAgregar.setBackground(new java.awt.Color(255, 255, 255));
         txtProfesorAgregar.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
         txtProfesorAgregar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 

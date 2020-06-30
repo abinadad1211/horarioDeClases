@@ -1,4 +1,4 @@
-package horarioclases.gui;
+package Vista;
 
 import java.awt.Color;
 
