@@ -3,7 +3,7 @@ package horarioclases.gui;
 import com.mxrck.autocompleter.TextAutoCompleter;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
-import horarioclases.Curso;
+import conexionBaseDatos.ConectarBD;
 import java.sql.*;
 import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
@@ -30,7 +30,7 @@ public class ConsultaExpEdu extends javax.swing.JInternalFrame {
         TextAutoCompleter prediccionCampoNRC = new TextAutoCompleter(txtNRC);
 
         //CONEXIÓN CON LA BASE DE DATOS
-        Connection DatosDeModuloConsulta = Curso.GetConnection();
+        Connection DatosDeModuloConsulta = ConectarBD.GetConnection();
         //INICIA LA CONSULTA
             try{
                 conexionBD = (Statement)DatosDeModuloConsulta.createStatement();
@@ -208,7 +208,7 @@ public class ConsultaExpEdu extends javax.swing.JInternalFrame {
     private void btnConsultaNRCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaNRCActionPerformed
         // CODIGO INICIO
         String NrcIngresado = txtNRC.getText();        
-        Connection consultaNRC = Curso.GetConnection();
+        Connection consultaNRC = ConectarBD.GetConnection();
         
         try {
             conexionBD = (Statement)consultaNRC.createStatement();
@@ -239,7 +239,7 @@ public class ConsultaExpEdu extends javax.swing.JInternalFrame {
     private void btnConsultaExpEduActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaExpEduActionPerformed
         // CODIGO INICIO
         String ExpEduIngresada = txtExpEdu.getText();        
-        Connection consultaExpEdu = Curso.GetConnection();
+        Connection consultaExpEdu = ConectarBD.GetConnection();
         
         try {
             conexionBD = (Statement)consultaExpEdu.createStatement();
