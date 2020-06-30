@@ -3,8 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/ADMIN/Documents/GitHub/horarioDeClases/HorarioClases/src/horarioclases/gui/CrearHorario.java</file>
-            <file>file:/C:/Users/ADMIN/Documents/GitHub/horarioDeClases/HorarioClases/src/horarioclases/gui/AgregarExpEduc.java</file>
+            <file>file:/C:/Users/Abinadad/Documents/GitHub/horarioDeClases/HorarioClases/src/horarioclases/Reservacion.java</file>
+            <file>file:/C:/Users/Abinadad/Documents/GitHub/horarioDeClases/HorarioClases/src/horarioclases/HorarioClases.java</file>
+            <file>file:/C:/Users/Abinadad/Documents/GitHub/horarioDeClases/HorarioClases/src/horarioclases/Horario.java</file>
+            <file>file:/C:/Users/Abinadad/Documents/GitHub/horarioDeClases/HorarioClases/src/horarioclases/Curso.java</file>
+            <file>file:/C:/Users/Abinadad/Documents/GitHub/horarioDeClases/HorarioClases/src/horarioclases/gui/AgregarExpEdu.java</file>
+            <file>file:/C:/Users/Abinadad/Documents/GitHub/horarioDeClases/HorarioClases/src/horarioclases/gui/ConsultaExpEdu.java</file>
+            <file>file:/C:/Users/Abinadad/Documents/GitHub/horarioDeClases/HorarioClases/src/horarioclases/Profesor.java</file>
+            <file>file:/C:/Users/Abinadad/Documents/GitHub/horarioDeClases/HorarioClases/src/conexionBaseDatos/ConectarBD.java</file>
+            <file>file:/C:/Users/Abinadad/Documents/GitHub/horarioDeClases/HorarioClases/src/horarioclases/gui/ConsultaSalon.java</file>
         </group>
     </open-files>
 </project-private>

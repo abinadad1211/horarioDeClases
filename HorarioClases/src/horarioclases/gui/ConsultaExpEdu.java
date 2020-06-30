@@ -252,6 +252,7 @@ public class ConsultaExpEdu extends javax.swing.JInternalFrame {
                    fila[2] = consulta.getString("nombre_completo");
                    modelo.addRow(fila);     
                }
+               
                 tblExpEdu.setModel(modelo);
                 TableColumn columna1 = tblExpEdu.getColumn("NRC");
                 columna1.setMaxWidth(75);

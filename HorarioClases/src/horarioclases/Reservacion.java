@@ -46,8 +46,6 @@ public class Reservacion {
     public void setDiaSemana(diaSemana diaSemana) {
         this.diaSemana = diaSemana;
     }
-
-    
     
 }
 

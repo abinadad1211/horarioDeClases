@@ -284,7 +284,13 @@ public class PrincipalHorario extends javax.swing.JFrame {
         pnlEscritorio.add(Opcion1);
         Opcion1.show();
     }//GEN-LAST:event_btnHorarioMousePressed
-
+    
+    private void btnProfesor(java.awt.event.MouseEvent evt){
+        consultaProfesores Opcion2 = new    consultaProfesores();
+        pnlEscritorio.add(Opcion2);
+        Opcion2.show();
+    }
+    
     private void btnExpEduMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExpEduMousePressed
         // TODO add your handling code here:
         ConsultaExpEdu Opcion3  = new ConsultaExpEdu();
