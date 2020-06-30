@@ -218,7 +218,7 @@ public class consultaProfesores extends javax.swing.JInternalFrame {
         
             try {
             conexionBD = (Statement)consultaProfesor.createStatement();                                                                                                                                                                             //ordenador.setRowFilter(RowFilter.regexFilter("(?i)" + text));
-            consulta = conexionBD.executeQuery("SELECT c.exp_educativa, c.nrc, r.dia_clases_clases, r.horarios_clases FROM profesor p INNER JOIN curso c ON p.id_profesor = c.profesor INNER JOIN reserva r ON c.nrc = r.nrc_reserva WHERE CONCAT(UCASE(LEFT(p.nombre, 1)), LCASE(SUBSTRING(p.nombre, 2))) like '"+nombreProfesorIngresado+"';");               
+            consulta = conexionBD.executeQuery("SELECT c.exp_educativa, c.nrc, r.dia_clases_clases, r.horarios_clases FROM profesor p INNER JOIN curso c ON p.id_profesor = c.profesor INNER JOIN reserva r ON c.nrc = r.nrc_reserva WHERE CONCAT(UCASE(LEFT(p.nombre, 1)), LCASE(SUBSTRING(p.nombre, 2))) like '"+nombreProfesorIngresado+"%';");               
             
             modelo = new DefaultTableModel(null,titulos);
             
