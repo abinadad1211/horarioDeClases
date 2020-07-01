@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package horarioclases.gui;
+package Vista;
 
 import com.mxrck.autocompleter.TextAutoCompleter;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
-import conexionBaseDatos.ConectarBD;
+import Modelo.ConectarBD;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;

@@ -2,6 +2,6 @@
 package Controlador;
 
 
-public class CtrlAgregarExp {
+public class CtrlCurso {
     
 }

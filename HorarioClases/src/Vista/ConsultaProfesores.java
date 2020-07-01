@@ -1,9 +1,9 @@
-package horarioclases.gui;
+package Vista;
 
 import com.mxrck.autocompleter.TextAutoCompleter;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
-import conexionBaseDatos.ConectarBD;
+import Modelo.ConectarBD;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.sql.*;

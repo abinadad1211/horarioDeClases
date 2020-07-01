@@ -1,5 +1,5 @@
 
-package horarioclases;
+package Modelo;
 
 public class HorarioClases {
 

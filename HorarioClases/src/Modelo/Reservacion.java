@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package horarioclases;
+package Modelo;
 
 /**
  *
@@ -12,14 +12,16 @@ package horarioclases;
 public class Reservacion {
     protected enum diaSemana{LUNES, MARTES, MIERCOLES, JUEVES, VIERNES, SABADO}; //Falta ver ocmo funcionan los enums
     protected String horaDia; //Se puede hacer enum
-    protected String salon;  
+    protected String salon;
+    protected String nrcReservacion;
     
     diaSemana diaSemana;
 
-    public Reservacion(String horaDia, String salon, diaSemana diaSemana) {
+    public Reservacion(String horaDia, String salon, diaSemana diaSemana, String nrcReservacion) {
         this.horaDia = horaDia;
         this.salon = salon;
         this.diaSemana = diaSemana;
+        this.nrcReservacion = nrcReservacion; 
     }
 
     
@@ -46,6 +48,15 @@ public class Reservacion {
     public void setDiaSemana(diaSemana diaSemana) {
         this.diaSemana = diaSemana;
     }
+
+    public String getNrcReservacion() {
+        return nrcReservacion;
+    }
+
+    public void setNrcReservacion(String nrcReservacion) {
+        this.nrcReservacion = nrcReservacion;
+    }
+    
     
 }
 

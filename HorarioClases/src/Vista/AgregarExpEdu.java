@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package horarioclases.gui;
+package Vista;
 
 import com.mxrck.autocompleter.TextAutoCompleter;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
-import conexionBaseDatos.ConectarBD;
+import Modelo.ConectarBD;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
@@ -89,8 +89,6 @@ public class AgregarExpEdu extends javax.swing.JFrame {
         jComboBox10 = new javax.swing.JComboBox<>();
         jComboBox11 = new javax.swing.JComboBox<>();
         jComboBox12 = new javax.swing.JComboBox<>();
-        lblSesionesAgregar = new javax.swing.JLabel();
-        txtSesionesAgregar = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -118,14 +116,12 @@ public class AgregarExpEdu extends javax.swing.JFrame {
         lblExpEduAgregar.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
         lblExpEduAgregar.setText("Experiencia Educativa:");
 
-        txtExpEduAgregar.setBackground(new java.awt.Color(255, 255, 255));
         txtExpEduAgregar.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
         txtExpEduAgregar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         lblProgEdu.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
         lblProgEdu.setText("Profesor:");
 
-        txtProfesorAgregar.setBackground(new java.awt.Color(255, 255, 255));
         txtProfesorAgregar.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
         txtProfesorAgregar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -232,18 +228,6 @@ public class AgregarExpEdu extends javax.swing.JFrame {
             }
         });
 
-        lblSesionesAgregar.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
-        lblSesionesAgregar.setText("Sesiones:");
-
-        txtSesionesAgregar.setEditable(false);
-        txtSesionesAgregar.setBackground(new java.awt.Color(255, 255, 255));
-        txtSesionesAgregar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txtSesionesAgregar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSesionesAgregarActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -251,35 +235,26 @@ public class AgregarExpEdu extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(139, 139, 139)
-                        .addComponent(btnAgregarExp1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(lblCrearHorario)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(lblExpEduAgregar)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(txtExpEduAgregar))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(lblNRCAgregarEE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(txtNRCAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(lblProgEdu)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(txtProfesorAgregar)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(lblCrearHorario)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(lblAulaAgregar)
+                                    .addComponent(lblExpEduAgregar)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(txtAulaAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(txtExpEduAgregar))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(lblNRCAgregarEE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(txtNRCAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(lblProgEdu)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(txtProfesorAgregar)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(lblSesionesAgregar)
+                                .addComponent(lblAulaAgregar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtSesionesAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(387, 387, 387))))
+                                .addComponent(txtAulaAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(126, 126, 126)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -306,7 +281,10 @@ public class AgregarExpEdu extends javax.swing.JFrame {
                             .addComponent(jComboBox9, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jComboBox10, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jComboBox11, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox12, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jComboBox12, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(149, 149, 149)
+                        .addComponent(btnAgregarExp1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(46, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -330,11 +308,7 @@ public class AgregarExpEdu extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblAulaAgregar)
                     .addComponent(txtAulaAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblSesionesAgregar)
-                    .addComponent(txtSesionesAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(21, 21, 21)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblHoraInicio)
                     .addComponent(lblHorafin))
@@ -368,9 +342,9 @@ public class AgregarExpEdu extends javax.swing.JFrame {
                     .addComponent(lblProgEdu6)
                     .addComponent(jComboBox8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBox12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
+                .addGap(27, 27, 27)
                 .addComponent(btnAgregarExp1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -416,10 +390,6 @@ public class AgregarExpEdu extends javax.swing.JFrame {
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
-
-    private void txtSesionesAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSesionesAgregarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSesionesAgregarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -485,11 +455,9 @@ public class AgregarExpEdu extends javax.swing.JFrame {
     private javax.swing.JLabel lblProgEdu5;
     private javax.swing.JLabel lblProgEdu6;
     private javax.swing.JLabel lblProgEdu7;
-    private javax.swing.JLabel lblSesionesAgregar;
     private javax.swing.JTextField txtAulaAgregar;
     private javax.swing.JTextField txtExpEduAgregar;
     private javax.swing.JTextField txtNRCAgregar;
     private javax.swing.JTextField txtProfesorAgregar;
-    private javax.swing.JTextField txtSesionesAgregar;
     // End of variables declaration//GEN-END:variables
 }

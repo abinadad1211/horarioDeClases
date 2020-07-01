@@ -1,4 +1,4 @@
-package horarioclases;
+package Modelo;
 
 import java.sql.*;
 import javax.swing.JOptionPane;
