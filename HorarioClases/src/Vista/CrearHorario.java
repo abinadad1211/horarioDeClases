@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package horarioclases.gui;
+package Vista;
 
 import javax.swing.JInternalFrame;
 import javax.swing.plaf.InternalFrameUI;
