@@ -138,7 +138,7 @@ public class ConsultaSalon extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(tblSalon);
 
-        txtSalon.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "001", "002", "003", "004", "005", "006", "007", "008", "009", "010", "CAN", "LAB" }));
+        txtSalon.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "001", "004", "010", "CAN", "LAB" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
