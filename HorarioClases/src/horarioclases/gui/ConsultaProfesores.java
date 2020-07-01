@@ -95,7 +95,7 @@ public class ConsultaProfesores extends javax.swing.JInternalFrame {
         tbHorarioProfesores = new javax.swing.JTable();
         btnBuscarProfesor = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(255, 219, 197));
         setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         setForeground(java.awt.Color.black);
         setMinimumSize(new java.awt.Dimension(24, 20));
@@ -130,7 +130,7 @@ public class ConsultaProfesores extends javax.swing.JInternalFrame {
 
         btnBuscarProfesor.setBackground(new java.awt.Color(255, 255, 255));
         btnBuscarProfesor.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
-        btnBuscarProfesor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cursos.png"))); // NOI18N
+        btnBuscarProfesor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/profesor.png"))); // NOI18N
         btnBuscarProfesor.setText("Buscar profesor");
         btnBuscarProfesor.setActionCommand("  Agregar Experiencia Educativa");
         btnBuscarProfesor.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -150,18 +150,16 @@ public class ConsultaProfesores extends javax.swing.JInternalFrame {
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 903, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGap(42, 42, 42)
-                                .addComponent(lbNombreProfesor)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtNombreProfesor))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(lblConsultarProfesores)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnBuscarProfesor)))
-                .addContainerGap(30, Short.MAX_VALUE))
+                        .addGap(42, 42, 42)
+                        .addComponent(lbNombreProfesor)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtNombreProfesor, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnBuscarProfesor, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lblConsultarProfesores, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(146, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -172,10 +170,10 @@ public class ConsultaProfesores extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbNombreProfesor)
                     .addComponent(txtNombreProfesor, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscarProfesor))
+                    .addComponent(btnBuscarProfesor, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(47, 47, 47)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(105, Short.MAX_VALUE))
+                .addContainerGap(138, Short.MAX_VALUE))
         );
 
         pack();
