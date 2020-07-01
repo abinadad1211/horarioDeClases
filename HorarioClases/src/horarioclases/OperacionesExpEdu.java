@@ -5,8 +5,6 @@ import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
 import conexionBaseDatos.ConectarBD;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class OperacionesExpEdu extends ConectarBD{
     
