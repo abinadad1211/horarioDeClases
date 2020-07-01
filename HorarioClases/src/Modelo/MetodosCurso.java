@@ -1,6 +1,7 @@
 
 package Modelo;
 
+import static Modelo.ConectarBD.GetConnection;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
 import java.sql.SQLException;

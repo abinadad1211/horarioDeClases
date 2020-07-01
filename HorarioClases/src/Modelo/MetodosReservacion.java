@@ -13,7 +13,7 @@ public class MetodosReservacion {
     Connection conexion = GetConnection();
       
     String insercionReservacion = "INSERT INTO reservacion (salon, dia_clases_clases, horarios_clases, nrc_reserva)"
-            + "VALUES (?,?,?,?)";
+            + "VALUES (?,?::,?,?)";
     
     try {
       ps = (PreparedStatement) conexion.prepareStatement(insercionReservacion);
