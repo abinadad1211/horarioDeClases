@@ -11,12 +11,12 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
 public class ConsultaExpEdu extends javax.swing.JInternalFrame {
-    protected Statement conexionBD = null;
-    protected ResultSet consulta = null;
+    protected Statement conexionConBaseDeDatos = null;
+    protected ResultSet oracionDeConsulta = null;
     
-   String titulos[] = {"NRC","Experiencia Educativa","Profesor"};
-   String fila[] = new String [3]; //Número de columnas equivalentes en ambas tablas (base de datos y el modulo de consulta)
-   DefaultTableModel modelo;
+   String encabezadosDeTabla[] = {"NRC","Experiencia Educativa","Profesor"};
+   String filaParaResultados[] = new String [3]; //Número de columnas equivalentes en ambas tablas (base de datos y el modulo de consulta)
+   DefaultTableModel tablaDeResultados;
 
    public ConsultaExpEdu() {
         initComponents();
@@ -30,34 +30,34 @@ public class ConsultaExpEdu extends javax.swing.JInternalFrame {
         TextAutoCompleter prediccionCampoNRC = new TextAutoCompleter(txtNRC);
 
         //CONEXIÓN CON LA BASE DE DATOS
-        Connection DatosDeModuloConsulta = ConectarBD.GetConnection();
+        Connection cargaDeDatosIniciales = ConectarBD.GetConnection();
         //INICIA LA CONSULTA
             try{
-                conexionBD = (Statement)DatosDeModuloConsulta.createStatement();
-                consulta = conexionBD.executeQuery("SELECT nrc, exp_educativa, CONCAT_WS(\" \",profesor.nombre, profesor.paterno, profesor.materno) AS nombre_completo FROM curso INNER JOIN profesor ON curso.profesor = profesor.id_profesor;");
-                modelo = new DefaultTableModel(null,titulos);
+                conexionConBaseDeDatos = (Statement)cargaDeDatosIniciales.createStatement();
+                oracionDeConsulta = conexionConBaseDeDatos.executeQuery("SELECT nrc, exp_educativa, CONCAT_WS(\" \",profesor.nombre, profesor.paterno, profesor.materno) AS nombre_completo FROM curso INNER JOIN profesor ON curso.profesor = profesor.id_profesor;");
+                tablaDeResultados = new DefaultTableModel(null,encabezadosDeTabla);
                 
                 //ASIGNACION DE DATOS
-                    while (consulta.next()){
-                    //CONSULTA DE AUTOCOMPLEMENTACIÓN
-                    prediccionCampoNRC.addItem(consulta.getString("nrc")); 
-                    prediccionCampoExpEdu.addItem(consulta.getString("exp_educativa"));
-                    //CONSULTA DE DATOS EN TABLA
-                    fila[0] = consulta.getString("nrc");
-                    fila[1] = consulta.getString("exp_educativa");
-                    fila[2] = consulta.getString("nombre_completo");
-                    modelo.addRow(fila);
+                    while (oracionDeConsulta.next()){
+                //CONSULTA DE AUTOCOMPLEMENTACIÓN
+                    prediccionCampoNRC.addItem(oracionDeConsulta.getString("nrc")); 
+                    prediccionCampoExpEdu.addItem(oracionDeConsulta.getString("exp_educativa"));
+                //CONSULTA DE DATOS EN TABLA
+                    filaParaResultados[0] = oracionDeConsulta.getString("nrc");
+                    filaParaResultados[1] = oracionDeConsulta.getString("exp_educativa");
+                    filaParaResultados[2] = oracionDeConsulta.getString("nombre_completo");
+                    tablaDeResultados.addRow(filaParaResultados);
                     }
                 //LLENADO DE TABLA
-                tblExpEdu.setModel(modelo);
-                TableColumn columna1 = tblExpEdu.getColumn("NRC");
-                columna1.setMaxWidth(75);
-                TableColumn columna2 = tblExpEdu.getColumn("Experiencia Educativa");
-                TableColumn columna3 = tblExpEdu.getColumn("Profesor");
+                tblExpEdu.setModel(tablaDeResultados);
+                TableColumn columnaNRC = tblExpEdu.getColumn("NRC");
+                columnaNRC.setMaxWidth(75);
+                TableColumn columnaExpEdu = tblExpEdu.getColumn("Experiencia Educativa");
+                TableColumn columnaProfesor = tblExpEdu.getColumn("Profesor");
 
                 //CIERRE DE VARIABLES
-                consulta.close();
-                conexionBD.close();
+                oracionDeConsulta.close();
+                conexionConBaseDeDatos.close();
                 
             }catch(SQLException de){
                     JOptionPane.showMessageDialog(this, de.getMessage());
@@ -208,27 +208,27 @@ public class ConsultaExpEdu extends javax.swing.JInternalFrame {
     private void btnConsultaNRCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaNRCActionPerformed
         // CODIGO INICIO
         String NrcIngresado = txtNRC.getText();        
-        Connection consultaNRC = ConectarBD.GetConnection();
+        Connection consultaExpEduPorNRC = ConectarBD.GetConnection();
         
         try {
-            conexionBD = (Statement)consultaNRC.createStatement();
-            consulta = conexionBD.executeQuery("SELECT nrc, exp_educativa, CONCAT_WS(' ',profesor.nombre, profesor.paterno, profesor.materno) AS nombre_completo FROM curso INNER JOIN profesor ON curso.profesor = profesor.id_profesor WHERE nrc = '"+NrcIngresado+"';");               
-            modelo = new DefaultTableModel(null,titulos);
+            conexionConBaseDeDatos = (Statement)consultaExpEduPorNRC.createStatement();
+            oracionDeConsulta = conexionConBaseDeDatos.executeQuery("SELECT nrc, exp_educativa, CONCAT_WS(' ',profesor.nombre, profesor.paterno, profesor.materno) AS nombre_completo FROM curso INNER JOIN profesor ON curso.profesor = profesor.id_profesor WHERE nrc = '"+NrcIngresado+"';");               
+            tablaDeResultados = new DefaultTableModel(null,encabezadosDeTabla);
             
-               while(consulta.next()) {
-                   fila[0] = consulta.getString("nrc");
-                   fila[1] = consulta.getString("exp_educativa");
-                   fila[2] = consulta.getString("nombre_completo");
-                   modelo.addRow(fila);     
+               while(oracionDeConsulta.next()) {
+                   filaParaResultados[0] = oracionDeConsulta.getString("nrc");
+                   filaParaResultados[1] = oracionDeConsulta.getString("exp_educativa");
+                   filaParaResultados[2] = oracionDeConsulta.getString("nombre_completo");
+                   tablaDeResultados.addRow(filaParaResultados);     
                }
-                tblExpEdu.setModel(modelo);
-                TableColumn columna1 = tblExpEdu.getColumn("NRC");
-                columna1.setMaxWidth(75);
-                TableColumn columna2 = tblExpEdu.getColumn("Experiencia Educativa");
-                TableColumn columna3 = tblExpEdu.getColumn("Profesor");
+                tblExpEdu.setModel(tablaDeResultados);
+                TableColumn columnaNRC = tblExpEdu.getColumn("NRC");
+                columnaNRC.setMaxWidth(75);
+                TableColumn columnaExpEdu = tblExpEdu.getColumn("Experiencia Educativa");
+                TableColumn columnaProfesor = tblExpEdu.getColumn("Profesor");
         
-            consulta.close();
-            consulta.close();      
+            oracionDeConsulta.close();
+            conexionConBaseDeDatos.close();      
         }catch (SQLException e) {
            JOptionPane.showMessageDialog(null,"Error al extraer los datos de la tabla");
         }
@@ -239,28 +239,28 @@ public class ConsultaExpEdu extends javax.swing.JInternalFrame {
     private void btnConsultaExpEduActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaExpEduActionPerformed
         // CODIGO INICIO
         String ExpEduIngresada = txtExpEdu.getText();        
-        Connection consultaExpEdu = ConectarBD.GetConnection();
+        Connection consultaExpEduPorNombre = ConectarBD.GetConnection();
         
         try {
-            conexionBD = (Statement)consultaExpEdu.createStatement();
-            consulta = conexionBD.executeQuery("SELECT nrc, exp_educativa, CONCAT_WS(' ',profesor.nombre, profesor.paterno, profesor.materno) AS nombre_completo FROM curso INNER JOIN profesor ON curso.profesor = profesor.id_profesor WHERE exp_educativa = '"+ExpEduIngresada+"';");               
-            modelo = new DefaultTableModel(null,titulos);
+            conexionConBaseDeDatos = (Statement)consultaExpEduPorNombre.createStatement();
+            oracionDeConsulta = conexionConBaseDeDatos.executeQuery("SELECT nrc, exp_educativa, CONCAT_WS(' ',profesor.nombre, profesor.paterno, profesor.materno) AS nombre_completo FROM curso INNER JOIN profesor ON curso.profesor = profesor.id_profesor WHERE exp_educativa = '"+ExpEduIngresada+"';");               
+            tablaDeResultados = new DefaultTableModel(null,encabezadosDeTabla);
             
-               while(consulta.next()) {
-                   fila[0] = consulta.getString("nrc");
-                   fila[1] = consulta.getString("exp_educativa");
-                   fila[2] = consulta.getString("nombre_completo");
-                   modelo.addRow(fila);     
+               while(oracionDeConsulta.next()) {
+                   filaParaResultados[0] = oracionDeConsulta.getString("nrc");
+                   filaParaResultados[1] = oracionDeConsulta.getString("exp_educativa");
+                   filaParaResultados[2] = oracionDeConsulta.getString("nombre_completo");
+                   tablaDeResultados.addRow(filaParaResultados);     
                }
                
-                tblExpEdu.setModel(modelo);
-                TableColumn columna1 = tblExpEdu.getColumn("NRC");
-                columna1.setMaxWidth(75);
-                TableColumn columna2 = tblExpEdu.getColumn("Experiencia Educativa");
-                TableColumn columna3 = tblExpEdu.getColumn("Profesor");
+                tblExpEdu.setModel(tablaDeResultados);
+                TableColumn columnaNRC = tblExpEdu.getColumn("NRC");
+                columnaNRC.setMaxWidth(75);
+                TableColumn columnaExpEdu = tblExpEdu.getColumn("Experiencia Educativa");
+                TableColumn columnaProfesor = tblExpEdu.getColumn("Profesor");
         
-            consulta.close();
-            consulta.close();      
+            oracionDeConsulta.close();
+            conexionConBaseDeDatos.close();      
         }catch (SQLException e) {
         JOptionPane.showMessageDialog(null,"Error al extraer los datos de la tabla");
         }
