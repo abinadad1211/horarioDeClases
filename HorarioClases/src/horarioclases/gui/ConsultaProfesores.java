@@ -36,53 +36,23 @@ public class ConsultaProfesores extends javax.swing.JInternalFrame {
         
         Connection DatosDeModuloConsulta = ConectarBD.GetConnection();
         
-                //INICIA LA CONSULTA
+        //INICIA LA CONSULTA
         try{
             conexionBD = (Statement)DatosDeModuloConsulta.createStatement();
-            consulta = conexionBD.executeQuery("SELECT c.exp_educativa, c.nrc, r.dia_clases_clases, r.horarios_clases FROM profesor p INNER JOIN curso c ON p.id_profesor = c.profesor INNER JOIN reserva r ON c.nrc = r.nrc_reserva;");
+            consulta = conexionBD.executeQuery("SELECT c.exp_educativa, c.nrc, GROUP_CONCAT(IF(r.dia_clases_clases = 'LUNES', r.horarios_clases, NULL)) LUNES, GROUP_CONCAT(IF(r.dia_clases_clases = 'MARTES', r.horarios_clases, NULL)) MARTES, GROUP_CONCAT(IF(r.dia_clases_clases = 'MIERCOLES', r.horarios_clases, NULL)) MIERCOLES, GROUP_CONCAT(IF(r.dia_clases_clases = 'JUEVES', r.horarios_clases, NULL)) JUEVES, GROUP_CONCAT(IF(r.dia_clases_clases = 'VIERNES', r.horarios_clases, NULL)) VIERNES, GROUP_CONCAT(IF(r.dia_clases_clases = 'SABADO', r.horarios_clases, NULL)) SABADO FROM profesor p	INNER JOIN curso c ON p.id_profesor = c.profesor INNER JOIN reserva r ON c.nrc= r.nrc_reserva	GROUP BY r.nrc_reserva;");               
             modelo = new DefaultTableModel(null,titulos);
             
             //ASIGNACION DE DATOS
             while (consulta.next()){
                 //CONSULTA DE AUTOCOMPLEMENTACIÓN
-                //prediccionCampoNombreProfesor.addItem(consulta.getString("p.nombre")); 
-                
-                //CONSULTA DE DATOS EN TABLA
                 fila[0] = consulta.getString("c.exp_educativa");
                 fila[1] = consulta.getString("c.nrc");
-                
-                if("LUNES".equals(consulta.getString("r.dia_clases_clases"))){
-                    fila[2] = consulta.getString("r.horarios_clases");
-                    ban[2]=true;
-                    
-                }else if("MARTES".equals(consulta.getString("r.dia_clases_clases"))){
-                    fila[3] = consulta.getString("r.horarios_clases");
-                    ban[3]=true;
-                    
-                }else if("MIERCOLES".equals(consulta.getString("r.dia_clases_clases"))){
-                    fila[4] = consulta.getString("r.horarios_clases");
-                    ban[4]=true;
-                   
-                }else if("JUEVES".equals(consulta.getString("r.dia_clases_clases"))){
-                    fila[5] = consulta.getString("r.horarios_clases");
-                    ban[5]=true;
-                    
-                }else if("VIERNES".equals(consulta.getString("r.dia_clases_clases"))){
-                    fila[6] = consulta.getString("r.horarios_clases");
-                    ban[6]=true;
-                    
-                }else if("SABADO".equals(consulta.getString("r.dia_clases_clases"))){
-                    fila[7] = consulta.getString("r.horarios_clases");
-                    ban[7]=true;
-                    
-                }
-                
-                //Iteracion para llenar con - los dias que no tiene clase el profesor
-                for(int i=2; i<=7; i++){
-                    if(ban[i]!=true){
-                        fila[i]="- - - - - - - - - - - -";
-                    }
-                }
+                fila[2] = consulta.getString("LUNES");
+                fila[3] = consulta.getString("MARTES");
+                fila[4] = consulta.getString("MIERCOLES");
+                fila[5] = consulta.getString("JUEVES");
+                fila[6] = consulta.getString("VIERNES");
+                fila[7] = consulta.getString("SABADO");
                 
                 modelo.addRow(fila);
             }
@@ -218,7 +188,7 @@ public class ConsultaProfesores extends javax.swing.JInternalFrame {
         
             try {
             conexionBD = (Statement)consultaProfesor.createStatement();                                                                                                                                                                             //ordenador.setRowFilter(RowFilter.regexFilter("(?i)" + text));
-            consulta = conexionBD.executeQuery("SELECT c.exp_educativa, c.nrc, r.dia_clases_clases, r.horarios_clases FROM profesor p INNER JOIN curso c ON p.id_profesor = c.profesor INNER JOIN reserva r ON c.nrc = r.nrc_reserva WHERE CONCAT(UCASE(LEFT(p.nombre, 1)), LCASE(SUBSTRING(p.nombre, 2))) like '"+nombreProfesorIngresado+"%';");               
+            consulta = conexionBD.executeQuery("SELECT c.exp_educativa, c.nrc, GROUP_CONCAT(IF(r.dia_clases_clases = 'LUNES', r.horarios_clases, NULL)) LUNES, GROUP_CONCAT(IF(r.dia_clases_clases = 'MARTES', r.horarios_clases, NULL)) MARTES, GROUP_CONCAT(IF(r.dia_clases_clases = 'MIERCOLES', r.horarios_clases, NULL)) MIERCOLES, GROUP_CONCAT(IF(r.dia_clases_clases = 'JUEVES', r.horarios_clases, NULL)) JUEVES, GROUP_CONCAT(IF(r.dia_clases_clases = 'VIERNES', r.horarios_clases, NULL)) VIERNES, GROUP_CONCAT(IF(r.dia_clases_clases = 'SABADO', r.horarios_clases, NULL)) SABADO FROM profesor p INNER JOIN curso c ON p.id_profesor = c.profesor INNER JOIN reserva r ON c.nrc= r.nrc_reserva WHERE CONCAT(UCASE(LEFT(p.nombre, 1)), LCASE(SUBSTRING(p.nombre, 2))) LIKE '"+nombreProfesorIngresado+"%'GROUP BY r.nrc_reserva;");               
             
             modelo = new DefaultTableModel(null,titulos);
             
@@ -226,30 +196,16 @@ public class ConsultaProfesores extends javax.swing.JInternalFrame {
                 //CONSULTA DE DATOS EN TABLA
                 fila[0] = consulta.getString("c.exp_educativa");
                 fila[1] = consulta.getString("c.nrc");
+                fila[2] = consulta.getString("LUNES");
+                fila[3] = consulta.getString("MARTES");
+                fila[4] = consulta.getString("MIERCOLES");
+                fila[5] = consulta.getString("JUEVES");
+                fila[6] = consulta.getString("VIERNES");
+                fila[7] = consulta.getString("SABADO");
+             
                 
-                if("LUNES".equals(consulta.getString("r.dia_clases_clases"))){
-                    fila[2] = consulta.getString("r.horarios_clases");
-                    
-                }else if("MARTES".equals(consulta.getString("r.dia_clases_clases"))){
-                    fila[3] = consulta.getString("r.horarios_clases");  
-                    
-                }else if("MIERCOLES".equals(consulta.getString("r.dia_clases_clases"))){
-                    fila[4] = consulta.getString("r.horarios_clases");
-                    
-                }else if("JUEVES".equals(consulta.getString("r.dia_clases_clases"))){
-                    fila[5] = consulta.getString("r.horarios_clases");
-                    
-                }else if("VIERNES".equals(consulta.getString("r.dia_clases_clases"))){
-                    fila[6] = consulta.getString("r.horarios_clases");
-                    
-                }else if("SABADO".equals(consulta.getString("r.dia_clases_clases"))){
-                    fila[7] = consulta.getString("r.horarios_clases");
-                   
-                }else{
+                modelo.addRow(fila); 
                 
-                }
-                
-                   modelo.addRow(fila);     
                 }
                 tbHorarioProfesores.setModel(modelo);
                 TableColumn columna1 = tbHorarioProfesores.getColumn("Experiencia Educativa");
