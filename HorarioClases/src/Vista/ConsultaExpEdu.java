@@ -35,7 +35,12 @@ public class ConsultaExpEdu extends javax.swing.JInternalFrame {
             try{
                 conexionConBaseDeDatos = (Statement)cargaDeDatosIniciales.createStatement();
                 oracionDeConsulta = conexionConBaseDeDatos.executeQuery("SELECT nrc, exp_educativa, CONCAT_WS(\" \",profesor.nombre, profesor.paterno, profesor.materno) AS nombre_completo FROM curso INNER JOIN profesor ON curso.profesor = profesor.id_profesor;");
-                tablaDeResultados = new DefaultTableModel(null,encabezadosDeTabla);
+                tablaDeResultados = new DefaultTableModel(null,encabezadosDeTabla){
+                    //Bloqueo de la funcion editar que trae JTable por default
+                    public boolean isCellEditable(int row, int column){
+                        return false;
+                    }
+                };
                 
                 //ASIGNACION DE DATOS
                     while (oracionDeConsulta.next()){

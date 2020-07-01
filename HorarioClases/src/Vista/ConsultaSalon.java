@@ -43,7 +43,12 @@ public class ConsultaSalon extends javax.swing.JInternalFrame {
             try{
                 conexionBD = (Statement)DatosDeModuloConsulta.createStatement();
                 consulta = conexionBD.executeQuery("SELECT idprofesor, nombreprofesor, GROUP_CONCAT(LUNES) AS Lunes, GROUP_CONCAT(MARTES) AS Martes, GROUP_CONCAT(MIERCOLES) AS Miercoles, GROUP_CONCAT(JUEVES) AS Jueves, GROUP_CONCAT(VIERNES) AS Viernes, GROUP_CONCAT(SABADO) AS Sábado FROM (SELECT profesor.id_profesor AS 'idprofesor', CONCAT_WS(' ',profesor.nombre, profesor.paterno, profesor.materno) AS 'nombreprofesor', IF (reserva.dia_clases_clases = 'LUNES', reserva.horarios_clases, null) AS 'LUNES', IF (reserva.dia_clases_clases = 'MARTES', reserva.horarios_clases, null) AS 'MARTES', IF (reserva.dia_clases_clases = 'MIERCOLES', reserva.horarios_clases, null) AS 'MIERCOLES', IF (reserva.dia_clases_clases = 'JUEVES', reserva.horarios_clases, null) AS 'JUEVES', IF (reserva.dia_clases_clases = 'VIERNES', reserva.horarios_clases, null) AS 'VIERNES', IF (reserva.dia_clases_clases = 'SABADO', reserva.horarios_clases, null) AS 'SABADO' FROM curso INNER JOIN profesor ON profesor.id_profesor = curso.profesor INNER JOIN reserva ON reserva.nrc_reserva = curso.nrc) AS TablaHorario GROUP BY idprofesor;");
-                modelo = new DefaultTableModel(null,titulos);
+                modelo = new DefaultTableModel(null,titulos){
+                    //Bloqueo de la funcion editar que trae JTable por default
+                    public boolean isCellEditable(int row, int column){
+                        return false;
+                    }
+                };
                 //ASIGNACION DE DATOS
                 while (consulta.next()){
              

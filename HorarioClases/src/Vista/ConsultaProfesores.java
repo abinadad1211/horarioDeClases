@@ -13,6 +13,7 @@ import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableRowSorter;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author Abinadad
@@ -40,7 +41,13 @@ public class ConsultaProfesores extends javax.swing.JInternalFrame {
         try{
             conexionBD = (Statement)DatosDeModuloConsulta.createStatement();
             consulta = conexionBD.executeQuery("SELECT p.nombre, c.exp_educativa, c.nrc, GROUP_CONCAT(IF(r.dia_clases_clases = 'LUNES', r.horarios_clases, NULL)) LUNES, GROUP_CONCAT(IF(r.dia_clases_clases = 'MARTES', r.horarios_clases, NULL)) MARTES, GROUP_CONCAT(IF(r.dia_clases_clases = 'MIERCOLES', r.horarios_clases, NULL)) MIERCOLES, GROUP_CONCAT(IF(r.dia_clases_clases = 'JUEVES', r.horarios_clases, NULL)) JUEVES, GROUP_CONCAT(IF(r.dia_clases_clases = 'VIERNES', r.horarios_clases, NULL)) VIERNES, GROUP_CONCAT(IF(r.dia_clases_clases = 'SABADO', r.horarios_clases, NULL)) SABADO FROM profesor p	INNER JOIN curso c ON p.id_profesor = c.profesor INNER JOIN reserva r ON c.nrc= r.nrc_reserva	GROUP BY r.nrc_reserva;");               
-            modelo = new DefaultTableModel(null,titulos);
+            modelo = new DefaultTableModel(null,titulos){
+                //Bloqueo de la funcion editar que trae JTable por default
+                public boolean isCellEditable(int row, int column){
+                    return false;
+                }
+            };
+           
             
             //ASIGNACION DE DATOS
             while (consulta.next()){
@@ -61,17 +68,18 @@ public class ConsultaProfesores extends javax.swing.JInternalFrame {
             }
             
             //LLENADO DE TABLA
-            tbHorarioProfesores.setModel(modelo);
-            TableColumn columna1 = tbHorarioProfesores.getColumn("Experiencia Educativa");
+            tblHorarioProfesores.setModel(modelo);
+            TableColumn columna1 = tblHorarioProfesores.getColumn("Experiencia Educativa");
             columna1.setMaxWidth(75);
-            TableColumn columna2 = tbHorarioProfesores.getColumn("NRC");
-            TableColumn columna3 = tbHorarioProfesores.getColumn("Lunes");
-            TableColumn columna4 = tbHorarioProfesores.getColumn("Martes");
-            TableColumn columna5 = tbHorarioProfesores.getColumn("Miercoles");
-            TableColumn columna6 = tbHorarioProfesores.getColumn("Jueves");
-            TableColumn columna7 = tbHorarioProfesores.getColumn("Viernes");
-            TableColumn columna8 = tbHorarioProfesores.getColumn("Sábado");
+            TableColumn columna2 = tblHorarioProfesores.getColumn("NRC");
+            TableColumn columna3 = tblHorarioProfesores.getColumn("Lunes");
+            TableColumn columna4 = tblHorarioProfesores.getColumn("Martes");
+            TableColumn columna5 = tblHorarioProfesores.getColumn("Miercoles");
+            TableColumn columna6 = tblHorarioProfesores.getColumn("Jueves");
+            TableColumn columna7 = tblHorarioProfesores.getColumn("Viernes");
+            TableColumn columna8 = tblHorarioProfesores.getColumn("Sábado");
             
+
 
             //CIERRE DE VARIABLES
             consulta.close();
@@ -95,7 +103,7 @@ public class ConsultaProfesores extends javax.swing.JInternalFrame {
         lbNombreProfesor = new javax.swing.JLabel();
         txtNombreProfesor = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tbHorarioProfesores = new javax.swing.JTable();
+        tblHorarioProfesores = new javax.swing.JTable();
         btnBuscarProfesor = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 219, 197));
@@ -110,7 +118,7 @@ public class ConsultaProfesores extends javax.swing.JInternalFrame {
         lbNombreProfesor.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
         lbNombreProfesor.setText("Nombre del profesor:");
 
-        tbHorarioProfesores.setModel(new javax.swing.table.DefaultTableModel(
+        tblHorarioProfesores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null},
@@ -129,7 +137,7 @@ public class ConsultaProfesores extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tbHorarioProfesores);
+        jScrollPane1.setViewportView(tblHorarioProfesores);
 
         btnBuscarProfesor.setBackground(new java.awt.Color(255, 255, 255));
         btnBuscarProfesor.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
@@ -208,16 +216,16 @@ public class ConsultaProfesores extends javax.swing.JInternalFrame {
                 modelo.addRow(fila); 
                 
                 }
-                tbHorarioProfesores.setModel(modelo);
-                TableColumn columna1 = tbHorarioProfesores.getColumn("Experiencia Educativa");
+                tblHorarioProfesores.setModel(modelo);
+                TableColumn columna1 = tblHorarioProfesores.getColumn("Experiencia Educativa");
                 columna1.setMaxWidth(75);
-                TableColumn columna2 = tbHorarioProfesores.getColumn("NRC");
-                TableColumn columna3 = tbHorarioProfesores.getColumn("Lunes");
-                TableColumn columna4 = tbHorarioProfesores.getColumn("Martes");
-                TableColumn columna5 = tbHorarioProfesores.getColumn("Miercoles");
-                TableColumn columna6 = tbHorarioProfesores.getColumn("Jueves");
-                TableColumn columna7 = tbHorarioProfesores.getColumn("Viernes");
-                TableColumn columna8 = tbHorarioProfesores.getColumn("Sábado");
+                TableColumn columna2 = tblHorarioProfesores.getColumn("NRC");
+                TableColumn columna3 = tblHorarioProfesores.getColumn("Lunes");
+                TableColumn columna4 = tblHorarioProfesores.getColumn("Martes");
+                TableColumn columna5 = tblHorarioProfesores.getColumn("Miercoles");
+                TableColumn columna6 = tblHorarioProfesores.getColumn("Jueves");
+                TableColumn columna7 = tblHorarioProfesores.getColumn("Viernes");
+                TableColumn columna8 = tblHorarioProfesores.getColumn("Sábado");
         
             consulta.close();
             consulta.close();      
@@ -234,7 +242,7 @@ public class ConsultaProfesores extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbNombreProfesor;
     private javax.swing.JLabel lblConsultarProfesores;
-    private javax.swing.JTable tbHorarioProfesores;
+    private javax.swing.JTable tblHorarioProfesores;
     private javax.swing.JTextField txtNombreProfesor;
     // End of variables declaration//GEN-END:variables
 }
