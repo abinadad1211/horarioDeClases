@@ -84,7 +84,6 @@ public class ConsultaExpEdu extends javax.swing.JInternalFrame {
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         setForeground(java.awt.Color.black);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         FondoModuloConsulta.setBackground(new java.awt.Color(255, 255, 255));
         FondoModuloConsulta.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -200,7 +199,16 @@ public class ConsultaExpEdu extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
-        getContentPane().add(FondoModuloConsulta, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 941, -1));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(FondoModuloConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 941, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(FondoModuloConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
