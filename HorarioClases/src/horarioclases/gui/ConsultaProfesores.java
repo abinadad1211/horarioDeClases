@@ -32,19 +32,22 @@ public class ConsultaProfesores extends javax.swing.JInternalFrame {
         BasicInternalFrameUI bi = (BasicInternalFrameUI)this.getUI();
         bi.setNorthPane(null);
         
-        TextAutoCompleter prediccionCampoNombreProfesor = new TextAutoCompleter(txtNombreProfesor);
+        TextAutoCompleter preddiccionCampoProfesor = new TextAutoCompleter(txtNombreProfesor);
         
         Connection DatosDeModuloConsulta = ConectarBD.GetConnection();
         
         //INICIA LA CONSULTA
         try{
             conexionBD = (Statement)DatosDeModuloConsulta.createStatement();
-            consulta = conexionBD.executeQuery("SELECT c.exp_educativa, c.nrc, GROUP_CONCAT(IF(r.dia_clases_clases = 'LUNES', r.horarios_clases, NULL)) LUNES, GROUP_CONCAT(IF(r.dia_clases_clases = 'MARTES', r.horarios_clases, NULL)) MARTES, GROUP_CONCAT(IF(r.dia_clases_clases = 'MIERCOLES', r.horarios_clases, NULL)) MIERCOLES, GROUP_CONCAT(IF(r.dia_clases_clases = 'JUEVES', r.horarios_clases, NULL)) JUEVES, GROUP_CONCAT(IF(r.dia_clases_clases = 'VIERNES', r.horarios_clases, NULL)) VIERNES, GROUP_CONCAT(IF(r.dia_clases_clases = 'SABADO', r.horarios_clases, NULL)) SABADO FROM profesor p	INNER JOIN curso c ON p.id_profesor = c.profesor INNER JOIN reserva r ON c.nrc= r.nrc_reserva	GROUP BY r.nrc_reserva;");               
+            consulta = conexionBD.executeQuery("SELECT p.nombre, c.exp_educativa, c.nrc, GROUP_CONCAT(IF(r.dia_clases_clases = 'LUNES', r.horarios_clases, NULL)) LUNES, GROUP_CONCAT(IF(r.dia_clases_clases = 'MARTES', r.horarios_clases, NULL)) MARTES, GROUP_CONCAT(IF(r.dia_clases_clases = 'MIERCOLES', r.horarios_clases, NULL)) MIERCOLES, GROUP_CONCAT(IF(r.dia_clases_clases = 'JUEVES', r.horarios_clases, NULL)) JUEVES, GROUP_CONCAT(IF(r.dia_clases_clases = 'VIERNES', r.horarios_clases, NULL)) VIERNES, GROUP_CONCAT(IF(r.dia_clases_clases = 'SABADO', r.horarios_clases, NULL)) SABADO FROM profesor p	INNER JOIN curso c ON p.id_profesor = c.profesor INNER JOIN reserva r ON c.nrc= r.nrc_reserva	GROUP BY r.nrc_reserva;");               
             modelo = new DefaultTableModel(null,titulos);
             
             //ASIGNACION DE DATOS
             while (consulta.next()){
                 //CONSULTA DE AUTOCOMPLEMENTACIÓN
+                preddiccionCampoProfesor.addItem(consulta.getString("p.nombre")); 
+                
+                //Llenado de tabla
                 fila[0] = consulta.getString("c.exp_educativa");
                 fila[1] = consulta.getString("c.nrc");
                 fila[2] = consulta.getString("LUNES");
