@@ -1,17 +1,22 @@
 package horarioclases;
 
+import java.sql.*;
+import javax.swing.JOptionPane;
+import com.mysql.jdbc.Connection;
+//import com.mysql.jdbc.Statement;
+
 /**
  * @author Alexis
  */
 
 public class Curso{
     protected String nrc;
-    protected String expEducativa;
+    protected String exp_educativa;
     protected String profesor; 
     
     public Curso(String nrc, String exp_educativa, String profesor) {
         this.nrc = nrc;
-        this.expEducativa = exp_educativa;
+        this.exp_educativa = exp_educativa;
         this.profesor = profesor;
     }
     
@@ -24,11 +29,11 @@ public class Curso{
     }
 
     public String getExp_educativa() {
-        return expEducativa;
+        return exp_educativa;
     }
 
     public void setExp_educativa(String exp_educativa) {
-        this.expEducativa = exp_educativa;
+        this.exp_educativa = exp_educativa;
     }
 
     public String getProfesor() {

@@ -4,6 +4,10 @@ import java.sql.*;
 import javax.swing.JOptionPane;
 
 public class ConectarBD {    
+    private static final String db="horario_de_clases";
+    private static final String usuario="admin";
+    private static final String contrasenia="-Lis401-samsung1";
+    private static final String url="jdbc:mysql://lis401.cbjqnknzqkto.us-east-2.rds.amazonaws.com:3306/horario_de_clases";
 
     public static com.mysql.jdbc.Connection GetConnection(){
         com.mysql.jdbc.Connection conexion = null;

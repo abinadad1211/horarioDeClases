@@ -303,7 +303,7 @@ public class PrincipalHorario extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalonMousePressed
 
     private void btnProfesorMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProfesorMousePressed
-        ConsultaProfesores Opcion2 = new    ConsultaProfesores();
+        consultaProfesores Opcion2 = new    consultaProfesores();
         pnlEscritorio.add(Opcion2);
         Opcion2.show();
     }//GEN-LAST:event_btnProfesorMousePressed
