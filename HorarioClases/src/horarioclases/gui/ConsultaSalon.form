@@ -77,8 +77,8 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="lblNRC" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="txtSalon" min="-2" pref="121" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="txtSalon" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
@@ -98,15 +98,10 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                   <Component id="lblConsultaExpEdu" min="-2" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                          <Component id="lblNRC" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                          <Component id="txtSalon" min="-2" pref="31" max="-2" attributes="0"/>
-                      </Group>
+                  <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblNRC" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtSalon" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="btnConsultarSalon" min="-2" pref="40" max="-2" attributes="0"/>
@@ -125,11 +120,6 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Sal&#xf3;n:"/>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txtSalon">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtSalonActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lblConsultaExpEdu">
           <Properties>
@@ -234,6 +224,29 @@
             </Component>
           </SubComponents>
         </Container>
+        <Component class="javax.swing.JComboBox" name="txtSalon">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="12">
+                <StringItem index="0" value="001"/>
+                <StringItem index="1" value="002"/>
+                <StringItem index="2" value="003"/>
+                <StringItem index="3" value="004"/>
+                <StringItem index="4" value="005"/>
+                <StringItem index="5" value="006"/>
+                <StringItem index="6" value="007"/>
+                <StringItem index="7" value="008"/>
+                <StringItem index="8" value="009"/>
+                <StringItem index="9" value="010"/>
+                <StringItem index="10" value="CAN"/>
+                <StringItem index="11" value="LAB"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
+        </Component>
       </SubComponents>
     </Container>
   </SubComponents>

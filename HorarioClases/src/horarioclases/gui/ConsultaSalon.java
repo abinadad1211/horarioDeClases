@@ -35,8 +35,7 @@ public class ConsultaSalon extends javax.swing.JInternalFrame {
         BasicInternalFrameUI bi = (BasicInternalFrameUI)this.getUI();
         bi.setNorthPane(null);
         
-//INICIA CARGA DE MODULO
-        TextAutoCompleter prediccionCampoExpEdu = new TextAutoCompleter(txtSalon);
+
         //CONEXIÓN CON LA BASE DE DATOS
         Connection DatosDeModuloConsulta = ConectarBD.GetConnection();
         //INICIA LA CONSULTA
@@ -92,11 +91,11 @@ public class ConsultaSalon extends javax.swing.JInternalFrame {
 
         jPanel1 = new javax.swing.JPanel();
         lblNRC = new javax.swing.JLabel();
-        txtSalon = new javax.swing.JTextField();
         lblConsultaExpEdu = new javax.swing.JLabel();
         btnConsultarSalon = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblSalon = new javax.swing.JTable();
+        txtSalon = new javax.swing.JComboBox<>();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -110,12 +109,6 @@ public class ConsultaSalon extends javax.swing.JInternalFrame {
 
         lblNRC.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
         lblNRC.setText("Salón:");
-
-        txtSalon.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSalonActionPerformed(evt);
-            }
-        });
 
         lblConsultaExpEdu.setFont(new java.awt.Font("Consolas", 1, 48)); // NOI18N
         lblConsultaExpEdu.setText("Consultar Salones");
@@ -145,6 +138,8 @@ public class ConsultaSalon extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(tblSalon);
 
+        txtSalon.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "001", "002", "003", "004", "005", "006", "007", "008", "009", "010", "CAN", "LAB" }));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -158,8 +153,8 @@ public class ConsultaSalon extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(lblNRC)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtSalon, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(txtSalon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(lblConsultaExpEdu)))
@@ -173,13 +168,10 @@ public class ConsultaSalon extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(lblConsultaExpEdu)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(lblNRC))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(txtSalon, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(21, 21, 21)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblNRC)
+                    .addComponent(txtSalon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnConsultarSalon, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -203,13 +195,9 @@ public class ConsultaSalon extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtSalonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSalonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSalonActionPerformed
-
     private void btnConsultarSalonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarSalonActionPerformed
         // CODIGO INICIO
-        String SalonIngresado = txtSalon.getText();        
+        String SalonIngresado = txtSalon.getSelectedItem().toString();        
         Connection consultaSalon = ConectarBD.GetConnection();
         try{
                 conexionBD = (Statement)consultaSalon.createStatement();
@@ -250,7 +238,7 @@ public class ConsultaSalon extends javax.swing.JInternalFrame {
             }catch(SQLException de){
                 JOptionPane.showMessageDialog(this, de.getMessage());
             }
-            txtSalon.setText("");
+
         
     }//GEN-LAST:event_btnConsultarSalonActionPerformed
 
@@ -262,6 +250,6 @@ public class ConsultaSalon extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblConsultaExpEdu;
     private javax.swing.JLabel lblNRC;
     private javax.swing.JTable tblSalon;
-    private javax.swing.JTextField txtSalon;
+    private javax.swing.JComboBox<String> txtSalon;
     // End of variables declaration//GEN-END:variables
 }
