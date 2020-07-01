@@ -40,7 +40,6 @@ public class PrincipalHorario extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pblNavegacion.setBackground(new java.awt.Color(24, 82, 157));
-        pblNavegacion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnHorario.setBackground(new java.awt.Color(24, 82, 157));
         btnHorario.setPreferredSize(new java.awt.Dimension(26, 48));
@@ -75,8 +74,6 @@ public class PrincipalHorario extends javax.swing.JFrame {
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
-        pblNavegacion.add(btnHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 80, 70));
-
         btnProfesor.setBackground(new java.awt.Color(24, 82, 157));
         btnProfesor.setPreferredSize(new java.awt.Dimension(26, 48));
         btnProfesor.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -109,8 +106,6 @@ public class PrincipalHorario extends javax.swing.JFrame {
                 .addComponent(jLabel4)
                 .addContainerGap(19, Short.MAX_VALUE))
         );
-
-        pblNavegacion.add(btnProfesor, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 80, 70));
 
         btnExpEdu.setBackground(new java.awt.Color(24, 82, 157));
         btnExpEdu.setPreferredSize(new java.awt.Dimension(26, 48));
@@ -145,8 +140,6 @@ public class PrincipalHorario extends javax.swing.JFrame {
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
-        pblNavegacion.add(btnExpEdu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 80, 70));
-
         btnSalon.setBackground(new java.awt.Color(24, 82, 157));
         btnSalon.setPreferredSize(new java.awt.Dimension(26, 48));
         btnSalon.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -180,7 +173,27 @@ public class PrincipalHorario extends javax.swing.JFrame {
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
-        pblNavegacion.add(btnSalon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 80, 70));
+        javax.swing.GroupLayout pblNavegacionLayout = new javax.swing.GroupLayout(pblNavegacion);
+        pblNavegacion.setLayout(pblNavegacionLayout);
+        pblNavegacionLayout.setHorizontalGroup(
+            pblNavegacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnHorario, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(btnProfesor, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(btnExpEdu, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(btnSalon, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        pblNavegacionLayout.setVerticalGroup(
+            pblNavegacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pblNavegacionLayout.createSequentialGroup()
+                .addGap(70, 70, 70)
+                .addComponent(btnHorario, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(btnProfesor, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(btnExpEdu, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(btnSalon, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         getContentPane().add(pblNavegacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 70, 695));
 
@@ -223,7 +236,7 @@ public class PrincipalHorario extends javax.swing.JFrame {
         );
         pnlEscritorioLayout.setVerticalGroup(
             pnlEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 638, Short.MAX_VALUE)
+            .addGap(0, 649, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout pnlhorarioLayout = new javax.swing.GroupLayout(pnlhorario);
@@ -234,9 +247,7 @@ public class PrincipalHorario extends javax.swing.JFrame {
         );
         pnlhorarioLayout.setVerticalGroup(
             pnlhorarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlhorarioLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(pnlEscritorio))
+            .addComponent(pnlEscritorio, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         getContentPane().add(pnlhorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 44, 940, -1));
@@ -303,7 +314,7 @@ public class PrincipalHorario extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalonMousePressed
 
     private void btnProfesorMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProfesorMousePressed
-        consultaProfesores Opcion2 = new    consultaProfesores();
+        ConsultaProfesores Opcion2 = new    ConsultaProfesores();
         pnlEscritorio.add(Opcion2);
         Opcion2.show();
     }//GEN-LAST:event_btnProfesorMousePressed

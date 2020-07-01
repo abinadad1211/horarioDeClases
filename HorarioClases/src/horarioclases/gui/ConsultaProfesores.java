@@ -17,7 +17,7 @@ import javax.swing.table.TableRowSorter;
  *
  * @author Abinadad
  */
-public class consultaProfesores extends javax.swing.JInternalFrame {
+public class ConsultaProfesores extends javax.swing.JInternalFrame {
     protected Statement conexionBD = null;
     protected ResultSet consulta = null;
     public static boolean ban[] = {false, false, false, false, false, false, false, false, false, false};
@@ -26,7 +26,7 @@ public class consultaProfesores extends javax.swing.JInternalFrame {
     String fila[] = new String [8]; //Número de columnas equivalentes en ambas tablas (base de datos y el modulo de consulta)
     DefaultTableModel modelo;
     
-    public consultaProfesores() {
+    public ConsultaProfesores() {
         initComponents();
         
         BasicInternalFrameUI bi = (BasicInternalFrameUI)this.getUI();
