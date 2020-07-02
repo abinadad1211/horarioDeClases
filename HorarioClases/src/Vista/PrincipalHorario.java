@@ -1,6 +1,7 @@
 package Vista;
 
 import Controlador.CtrlCurso;
+import Controlador.CtrlProfesores;
 import java.awt.Color;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
@@ -321,7 +322,6 @@ public class PrincipalHorario extends javax.swing.JFrame {
     }//GEN-LAST:event_btnHorarioMousePressed
     
     private void btnExpEduMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExpEduMousePressed
-        // TODO add your handling code here:
         ConsultaExpEdu internalExpEdu = new ConsultaExpEdu();
         BasicInternalFrameUI bi = (BasicInternalFrameUI)internalExpEdu.getUI();
         bi.setNorthPane(null);
@@ -338,9 +338,12 @@ public class PrincipalHorario extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalonMousePressed
 
     private void btnProfesorMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProfesorMousePressed
-        ConsultaProfesores Opcion2 = new    ConsultaProfesores();
-        pnlEscritorio.add(Opcion2);
-        Opcion2.show();
+        ConsultaProfesores internalProfesores = new ConsultaProfesores();
+        BasicInternalFrameUI bi = (BasicInternalFrameUI)internalProfesores.getUI();
+        bi.setNorthPane(null);
+        pnlEscritorio.add(internalProfesores);
+        CtrlProfesores internalCtrlProf = new CtrlProfesores(internalProfesores);
+        internalProfesores.show();
     }//GEN-LAST:event_btnProfesorMousePressed
 
     /**

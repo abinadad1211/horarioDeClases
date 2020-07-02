@@ -10,6 +10,10 @@ package Modelo;
  * @author Luis
  */
 public class Reservacion {
+
+    public Reservacion() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     protected enum diaSemana{LUNES, MARTES, MIERCOLES, JUEVES, VIERNES, SABADO}; //Falta ver ocmo funcionan los enums
     protected String horaDia; //Se puede hacer enum
     protected String salon;

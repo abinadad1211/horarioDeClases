@@ -107,7 +107,7 @@ public class MetodosCurso extends ConectarBD{
     } catch (SQLException e) {
       System.err.println(e);
     } 
-      return datosExpEdu;        
-    
-  }  
+      return datosExpEdu;          
+  }
+
 }

@@ -191,7 +191,7 @@ public class ConsultaProfesores extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscarProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarProfesorActionPerformed
-        String nombreProfesorIngresado = txtNombreProfesor.getText();  
+        /**String nombreProfesorIngresado = txtNombreProfesor.getText();  
        
         Connection consultaProfesor = ConectarBD.GetConnection();
         
@@ -232,17 +232,17 @@ public class ConsultaProfesores extends javax.swing.JInternalFrame {
         }catch (SQLException e) {
            JOptionPane.showMessageDialog(null,"Error al extraer los datos de la tabla");
         }
-        txtNombreProfesor.setText("");
+        txtNombreProfesor.setText("");**/
     }//GEN-LAST:event_btnBuscarProfesorActionPerformed
 
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBuscarProfesor;
+    public javax.swing.JButton btnBuscarProfesor;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbNombreProfesor;
     private javax.swing.JLabel lblConsultarProfesores;
-    private javax.swing.JTable tblHorarioProfesores;
-    private javax.swing.JTextField txtNombreProfesor;
+    public javax.swing.JTable tblHorarioProfesores;
+    public javax.swing.JTextField txtNombreProfesor;
     // End of variables declaration//GEN-END:variables
 }
