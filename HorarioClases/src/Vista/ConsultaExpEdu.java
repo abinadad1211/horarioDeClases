@@ -11,6 +11,8 @@ import javax.swing.plaf.basic.BasicInternalFrameUI;
 //import javax.swing.table.TableColumn;
 
 public class ConsultaExpEdu extends javax.swing.JInternalFrame {
+    
+    
 //    protected Statement conexionConBaseDeDatos = null;
 //    protected ResultSet oracionDeConsulta = null;
 //    
@@ -24,6 +26,8 @@ public class ConsultaExpEdu extends javax.swing.JInternalFrame {
         //Quitar la barra de titulo
         BasicInternalFrameUI bi = (BasicInternalFrameUI)this.getUI();
         bi.setNorthPane(null);
+        
+        
         
 ////INICIA CARGA DE MODULO
 //        TextAutoCompleter prediccionCampoExpEdu = new TextAutoCompleter(txtExpEdu);

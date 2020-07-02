@@ -1,5 +1,6 @@
 package Vista;
 
+import Controlador.CtrlCurso;
 import java.awt.Color;
 
 public class PrincipalHorario extends javax.swing.JFrame {
@@ -10,6 +11,8 @@ public class PrincipalHorario extends javax.swing.JFrame {
     public PrincipalHorario() {
         initComponents();
         this.setLocationRelativeTo(null);
+        
+        
     }
 
     @SuppressWarnings("unchecked")
