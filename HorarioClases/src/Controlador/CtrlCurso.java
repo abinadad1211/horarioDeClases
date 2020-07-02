@@ -14,10 +14,17 @@ public class CtrlCurso implements ActionListener{
     private AgregarCurso agregarCurso;
     private ConsultaExpEdu consultaExpEdu;
 
-    public CtrlCurso(Curso curso, MetodosCurso metodosCurso, AgregarCurso agregarCurso, ConsultaExpEdu consultaExpEdu) {
+    public CtrlCurso(Curso curso, MetodosCurso metodosCurso, AgregarCurso agregarCurso) {
         this.curso = curso;
         this.metodosCurso = metodosCurso;
         this.agregarCurso = agregarCurso;
+        this.consultaExpEdu.btnConsultaNRC.addActionListener(this);
+        this.consultaExpEdu.btnConsultaExpEdu.addActionListener(this);
+    }
+    
+    public CtrlCurso(Curso curso, MetodosCurso metodosCurso, ConsultaExpEdu consultaExpEdu) {
+        this.curso = curso;
+        this.metodosCurso = metodosCurso;
         this.consultaExpEdu = consultaExpEdu;
         this.consultaExpEdu.btnConsultaNRC.addActionListener(this);
         this.consultaExpEdu.btnConsultaExpEdu.addActionListener(this);

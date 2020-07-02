@@ -19,6 +19,10 @@ public class MetodosCurso extends ConectarBD{
         this.consultaExpEdu = consultaExpEdu;
     }
 
+    MetodosCurso() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
   
   public boolean RegistrarCurso(Curso ExpEdu){
     PreparedStatement ps = null;
