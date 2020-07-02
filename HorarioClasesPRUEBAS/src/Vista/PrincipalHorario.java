@@ -319,12 +319,11 @@ public class PrincipalHorario extends javax.swing.JFrame {
     
     private void btnExpEduMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExpEduMousePressed
         // TODO add your handling code here:
-        ConsultaExpEdu internalExpEdu = new ConsultaExpEdu();
+        FrmConsultaExpEdu frmConsultaExpEdu = new FrmConsultaExpEdu();
         //BasicInternalFrameUI bi = (BasicInternalFrameUI)internalExpEdu.getUI();
         //bi.setNorthPane(null);
-        pnlEscritorio.add(internalExpEdu);
-        CtrlCurso internalCurso = new CtrlCurso(internalExpEdu);
-        internalExpEdu.show();
+        CtrlCurso internalCurso = new CtrlCurso(frmConsultaExpEdu);
+        frmConsultaExpEdu.setVisible(true);
     }//GEN-LAST:event_btnExpEduMousePressed
 
     private void btnSalonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalonMousePressed
