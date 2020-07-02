@@ -1,24 +1,16 @@
 package Modelo;
 
-import java.sql.*;
-import javax.swing.JOptionPane;
-import com.mysql.jdbc.Connection;
-//import com.mysql.jdbc.Statement;
+
 
 /**
  * @author Alexis
  */
 
 public class Curso{
-    protected String nrc;
-    protected String exp_educativa;
-    protected String profesor; 
     
-    public Curso(String nrc, String exp_educativa, String profesor) {
-        this.nrc = nrc;
-        this.exp_educativa = exp_educativa;
-        this.profesor = profesor;
-    }
+    private String nrc;
+    private String exp_educativa;
+    private String profesor;
     
     public String getNrc() {
         return nrc;
@@ -43,6 +35,5 @@ public class Curso{
     public void setProfesor(String profesor) {
         this.profesor = profesor;
     }
-   
-    
+     
 }

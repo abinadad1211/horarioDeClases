@@ -1,22 +1,22 @@
 package Vista;
 
-import com.mxrck.autocompleter.TextAutoCompleter;
-import com.mysql.jdbc.Connection;
-import com.mysql.jdbc.Statement;
-import Modelo.ConectarBD;
-import java.sql.*;
-import javax.swing.JOptionPane;
+//import com.mxrck.autocompleter.TextAutoCompleter;
+//import com.mysql.jdbc.Connection;
+//import com.mysql.jdbc.Statement;
+//import Modelo.ConectarBD;
+//import java.sql.*;
+//import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumn;
+//import javax.swing.table.DefaultTableModel;
+//import javax.swing.table.TableColumn;
 
 public class ConsultaExpEdu extends javax.swing.JInternalFrame {
-    protected Statement conexionConBaseDeDatos = null;
-    protected ResultSet oracionDeConsulta = null;
-    
-   String encabezadosDeTabla[] = {"NRC","Experiencia Educativa","Profesor"};
-   String filaParaResultados[] = new String [3]; //Número de columnas equivalentes en ambas tablas (base de datos y el modulo de consulta)
-   DefaultTableModel tablaDeResultados;
+//    protected Statement conexionConBaseDeDatos = null;
+//    protected ResultSet oracionDeConsulta = null;
+//    
+//   String encabezadosDeTabla[] = {"NRC","Experiencia Educativa","Profesor"};
+//   String filaParaResultados[] = new String [3]; //Número de columnas equivalentes en ambas tablas (base de datos y el modulo de consulta)
+//   DefaultTableModel tablaDeResultados;
 
    public ConsultaExpEdu() {
         initComponents();
@@ -25,49 +25,49 @@ public class ConsultaExpEdu extends javax.swing.JInternalFrame {
         BasicInternalFrameUI bi = (BasicInternalFrameUI)this.getUI();
         bi.setNorthPane(null);
         
-//INICIA CARGA DE MODULO
-        TextAutoCompleter prediccionCampoExpEdu = new TextAutoCompleter(txtExpEdu);
-        TextAutoCompleter prediccionCampoNRC = new TextAutoCompleter(txtNRC);
-
-        //CONEXIÓN CON LA BASE DE DATOS
-        Connection cargaDeDatosIniciales = ConectarBD.GetConnection();
-        //INICIA LA CONSULTA
-            try{
-                conexionConBaseDeDatos = (Statement)cargaDeDatosIniciales.createStatement();
-                oracionDeConsulta = conexionConBaseDeDatos.executeQuery("SELECT nrc, exp_educativa, CONCAT_WS(\" \",profesor.nombre, profesor.paterno, profesor.materno) AS nombre_completo FROM curso INNER JOIN profesor ON curso.profesor = profesor.id_profesor;");
-                tablaDeResultados = new DefaultTableModel(null,encabezadosDeTabla){
-                    //Bloqueo de la funcion editar que trae JTable por default
-                    public boolean isCellEditable(int row, int column){
-                        return false;
-                    }
-                };
-                
-                //ASIGNACION DE DATOS
-                    while (oracionDeConsulta.next()){
-                //CONSULTA DE AUTOCOMPLEMENTACIÓN
-                    prediccionCampoNRC.addItem(oracionDeConsulta.getString("nrc")); 
-                    prediccionCampoExpEdu.addItem(oracionDeConsulta.getString("exp_educativa"));
-                //CONSULTA DE DATOS EN TABLA
-                    filaParaResultados[0] = oracionDeConsulta.getString("nrc");
-                    filaParaResultados[1] = oracionDeConsulta.getString("exp_educativa");
-                    filaParaResultados[2] = oracionDeConsulta.getString("nombre_completo");
-                    tablaDeResultados.addRow(filaParaResultados);
-                    }
-                //LLENADO DE TABLA
-                tblExpEdu.setModel(tablaDeResultados);
-                TableColumn columnaNRC = tblExpEdu.getColumn("NRC");
-                columnaNRC.setMaxWidth(75);
-                TableColumn columnaExpEdu = tblExpEdu.getColumn("Experiencia Educativa");
-                TableColumn columnaProfesor = tblExpEdu.getColumn("Profesor");
-
-                //CIERRE DE VARIABLES
-                oracionDeConsulta.close();
-                conexionConBaseDeDatos.close();
-                
-            }catch(SQLException de){
-                    JOptionPane.showMessageDialog(this, de.getMessage());
-            }
-//FINALIZA CARGA DE MODULO
+////INICIA CARGA DE MODULO
+//        TextAutoCompleter prediccionCampoExpEdu = new TextAutoCompleter(txtExpEdu);
+//        TextAutoCompleter prediccionCampoNRC = new TextAutoCompleter(txtNRC);
+//
+//        //CONEXIÓN CON LA BASE DE DATOS
+//        Connection cargaDeDatosIniciales = ConectarBD.GetConnection();
+//        //INICIA LA CONSULTA
+//            try{
+//                conexionConBaseDeDatos = (Statement)cargaDeDatosIniciales.createStatement();
+//                oracionDeConsulta = conexionConBaseDeDatos.executeQuery("SELECT nrc, exp_educativa, CONCAT_WS(\" \",profesor.nombre, profesor.paterno, profesor.materno) AS nombre_completo FROM curso INNER JOIN profesor ON curso.profesor = profesor.id_profesor;");
+//                tablaDeResultados = new DefaultTableModel(null,encabezadosDeTabla){
+//                    //Bloqueo de la funcion editar que trae JTable por default
+//                    public boolean isCellEditable(int row, int column){
+//                        return false;
+//                    }
+//                };
+//                
+//                //ASIGNACION DE DATOS
+//                    while (oracionDeConsulta.next()){
+//                //CONSULTA DE AUTOCOMPLEMENTACIÓN
+//                    prediccionCampoNRC.addItem(oracionDeConsulta.getString("nrc")); 
+//                    prediccionCampoExpEdu.addItem(oracionDeConsulta.getString("exp_educativa"));
+//                //CONSULTA DE DATOS EN TABLA
+//                    filaParaResultados[0] = oracionDeConsulta.getString("nrc");
+//                    filaParaResultados[1] = oracionDeConsulta.getString("exp_educativa");
+//                    filaParaResultados[2] = oracionDeConsulta.getString("nombre_completo");
+//                    tablaDeResultados.addRow(filaParaResultados);
+//                    }
+//                //LLENADO DE TABLA
+//                tblExpEdu.setModel(tablaDeResultados);
+//                TableColumn columnaNRC = tblExpEdu.getColumn("NRC");
+//                columnaNRC.setMaxWidth(75);
+//                TableColumn columnaExpEdu = tblExpEdu.getColumn("Experiencia Educativa");
+//                TableColumn columnaProfesor = tblExpEdu.getColumn("Profesor");
+//
+//                //CIERRE DE VARIABLES
+//                oracionDeConsulta.close();
+//                conexionConBaseDeDatos.close();
+//                
+//            }catch(SQLException de){
+//                    JOptionPane.showMessageDialog(this, de.getMessage());
+//            }
+////FINALIZA CARGA DE MODULO
 
    }
 
@@ -219,79 +219,79 @@ public class ConsultaExpEdu extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnConsultaNRCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaNRCActionPerformed
-        // CODIGO INICIO
-        String NrcIngresado = txtNRC.getText();        
-        Connection consultaExpEduPorNRC = ConectarBD.GetConnection();
-        
-        try {
-            conexionConBaseDeDatos = (Statement)consultaExpEduPorNRC.createStatement();
-            oracionDeConsulta = conexionConBaseDeDatos.executeQuery("SELECT nrc, exp_educativa, CONCAT_WS(' ',profesor.nombre, profesor.paterno, profesor.materno) AS nombre_completo FROM curso INNER JOIN profesor ON curso.profesor = profesor.id_profesor WHERE nrc = '"+NrcIngresado+"';");               
-            tablaDeResultados = new DefaultTableModel(null,encabezadosDeTabla);
-            
-               while(oracionDeConsulta.next()) {
-                   filaParaResultados[0] = oracionDeConsulta.getString("nrc");
-                   filaParaResultados[1] = oracionDeConsulta.getString("exp_educativa");
-                   filaParaResultados[2] = oracionDeConsulta.getString("nombre_completo");
-                   tablaDeResultados.addRow(filaParaResultados);     
-               }
-                tblExpEdu.setModel(tablaDeResultados);
-                TableColumn columnaNRC = tblExpEdu.getColumn("NRC");
-                columnaNRC.setMaxWidth(75);
-                TableColumn columnaExpEdu = tblExpEdu.getColumn("Experiencia Educativa");
-                TableColumn columnaProfesor = tblExpEdu.getColumn("Profesor");
-        
-            oracionDeConsulta.close();
-            conexionConBaseDeDatos.close();      
-        }catch (SQLException e) {
-           JOptionPane.showMessageDialog(null,"Error al extraer los datos de la tabla");
-        }
-        txtNRC.setText("");
-        //CODIGO FIN
+//        // CODIGO INICIO
+//        String NrcIngresado = txtNRC.getText();        
+//        Connection consultaExpEduPorNRC = ConectarBD.GetConnection();
+//        
+//        try {
+//            conexionConBaseDeDatos = (Statement)consultaExpEduPorNRC.createStatement();
+//            oracionDeConsulta = conexionConBaseDeDatos.executeQuery("SELECT nrc, exp_educativa, CONCAT_WS(' ',profesor.nombre, profesor.paterno, profesor.materno) AS nombre_completo FROM curso INNER JOIN profesor ON curso.profesor = profesor.id_profesor WHERE nrc = '"+NrcIngresado+"';");               
+//            tablaDeResultados = new DefaultTableModel(null,encabezadosDeTabla);
+//            
+//               while(oracionDeConsulta.next()) {
+//                   filaParaResultados[0] = oracionDeConsulta.getString("nrc");
+//                   filaParaResultados[1] = oracionDeConsulta.getString("exp_educativa");
+//                   filaParaResultados[2] = oracionDeConsulta.getString("nombre_completo");
+//                   tablaDeResultados.addRow(filaParaResultados);     
+//               }
+//                tblExpEdu.setModel(tablaDeResultados);
+//                TableColumn columnaNRC = tblExpEdu.getColumn("NRC");
+//                columnaNRC.setMaxWidth(75);
+//                TableColumn columnaExpEdu = tblExpEdu.getColumn("Experiencia Educativa");
+//                TableColumn columnaProfesor = tblExpEdu.getColumn("Profesor");
+//        
+//            oracionDeConsulta.close();
+//            conexionConBaseDeDatos.close();      
+//        }catch (SQLException e) {
+//           JOptionPane.showMessageDialog(null,"Error al extraer los datos de la tabla");
+//        }
+//        txtNRC.setText("");
+//        //CODIGO FIN
     }//GEN-LAST:event_btnConsultaNRCActionPerformed
 
     private void btnConsultaExpEduActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaExpEduActionPerformed
-        // CODIGO INICIO
-        String ExpEduIngresada = txtExpEdu.getText();        
-        Connection consultaExpEduPorNombre = ConectarBD.GetConnection();
-        
-        try {
-            conexionConBaseDeDatos = (Statement)consultaExpEduPorNombre.createStatement();
-            oracionDeConsulta = conexionConBaseDeDatos.executeQuery("SELECT nrc, exp_educativa, CONCAT_WS(' ',profesor.nombre, profesor.paterno, profesor.materno) AS nombre_completo FROM curso INNER JOIN profesor ON curso.profesor = profesor.id_profesor WHERE exp_educativa = '"+ExpEduIngresada+"';");               
-            tablaDeResultados = new DefaultTableModel(null,encabezadosDeTabla);
-            
-               while(oracionDeConsulta.next()) {
-                   filaParaResultados[0] = oracionDeConsulta.getString("nrc");
-                   filaParaResultados[1] = oracionDeConsulta.getString("exp_educativa");
-                   filaParaResultados[2] = oracionDeConsulta.getString("nombre_completo");
-                   tablaDeResultados.addRow(filaParaResultados);     
-               }
-               
-                tblExpEdu.setModel(tablaDeResultados);
-                TableColumn columnaNRC = tblExpEdu.getColumn("NRC");
-                columnaNRC.setMaxWidth(75);
-                TableColumn columnaExpEdu = tblExpEdu.getColumn("Experiencia Educativa");
-                TableColumn columnaProfesor = tblExpEdu.getColumn("Profesor");
-        
-            oracionDeConsulta.close();
-            conexionConBaseDeDatos.close();      
-        }catch (SQLException e) {
-        JOptionPane.showMessageDialog(null,"Error al extraer los datos de la tabla");
-        }
-        txtExpEdu.setText("");
-        //CODIGO FIN
+//        // CODIGO INICIO
+//        String ExpEduIngresada = txtExpEdu.getText();        
+//        Connection consultaExpEduPorNombre = ConectarBD.GetConnection();
+//        
+//        try {
+//            conexionConBaseDeDatos = (Statement)consultaExpEduPorNombre.createStatement();
+//            oracionDeConsulta = conexionConBaseDeDatos.executeQuery("SELECT nrc, exp_educativa, CONCAT_WS(' ',profesor.nombre, profesor.paterno, profesor.materno) AS nombre_completo FROM curso INNER JOIN profesor ON curso.profesor = profesor.id_profesor WHERE exp_educativa = '"+ExpEduIngresada+"';");               
+//            tablaDeResultados = new DefaultTableModel(null,encabezadosDeTabla);
+//            
+//               while(oracionDeConsulta.next()) {
+//                   filaParaResultados[0] = oracionDeConsulta.getString("nrc");
+//                   filaParaResultados[1] = oracionDeConsulta.getString("exp_educativa");
+//                   filaParaResultados[2] = oracionDeConsulta.getString("nombre_completo");
+//                   tablaDeResultados.addRow(filaParaResultados);     
+//               }
+//               
+//                tblExpEdu.setModel(tablaDeResultados);
+//                TableColumn columnaNRC = tblExpEdu.getColumn("NRC");
+//                columnaNRC.setMaxWidth(75);
+//                TableColumn columnaExpEdu = tblExpEdu.getColumn("Experiencia Educativa");
+//                TableColumn columnaProfesor = tblExpEdu.getColumn("Profesor");
+//        
+//            oracionDeConsulta.close();
+//            conexionConBaseDeDatos.close();      
+//        }catch (SQLException e) {
+//        JOptionPane.showMessageDialog(null,"Error al extraer los datos de la tabla");
+//        }
+//        txtExpEdu.setText("");
+//        //CODIGO FIN
     }//GEN-LAST:event_btnConsultaExpEduActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel FondoModuloConsulta;
     private javax.swing.JScrollPane ResultadoModuloConsulta;
-    private javax.swing.JButton btnConsultaExpEdu;
-    private javax.swing.JButton btnConsultaNRC;
-    private javax.swing.JLabel lblConsultaExpEdu;
-    private javax.swing.JLabel lblExpEdu;
-    private javax.swing.JLabel lblNRC;
-    private javax.swing.JTable tblExpEdu;
-    private javax.swing.JTextField txtExpEdu;
-    private javax.swing.JTextField txtNRC;
+    public javax.swing.JButton btnConsultaExpEdu;
+    public javax.swing.JButton btnConsultaNRC;
+    public javax.swing.JLabel lblConsultaExpEdu;
+    public javax.swing.JLabel lblExpEdu;
+    public javax.swing.JLabel lblNRC;
+    public javax.swing.JTable tblExpEdu;
+    public javax.swing.JTextField txtExpEdu;
+    public javax.swing.JTextField txtNRC;
     // End of variables declaration//GEN-END:variables
 }
