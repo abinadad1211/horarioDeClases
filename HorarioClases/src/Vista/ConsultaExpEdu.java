@@ -99,10 +99,7 @@ public class ConsultaExpEdu extends javax.swing.JInternalFrame {
 
         tblExpEdu.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "NRC", "Experiencia Educativa", "Profesor"

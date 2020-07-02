@@ -67,7 +67,7 @@ public class MetodosCurso extends ConectarBD{
     List<Curso>datosExpEdu = new ArrayList<>();  
     String llenadoModuloCurso = "SELECT nrc, exp_educativa, "
             + "CONCAT_WS(' ',profesor.nombre, profesor.paterno, profesor.materno) AS nombre_completo "
-            + "FROM curso INNER JOIN profesor ON curso.profesor = profesor.id_profesor WHERE nrc="+buscarNrc+";";         
+            + "FROM curso INNER JOIN profesor ON curso.profesor = profesor.id_profesor WHERE nrc='"+buscarNrc+"';";         
     
     try {
       ps = (PreparedStatement) conexion.prepareStatement(llenadoModuloCurso);
@@ -86,16 +86,15 @@ public class MetodosCurso extends ConectarBD{
       return datosExpEdu;
   }  
 
-  public List BusquedaCursoExpEdu(Curso ExpEdu){
+  public List BusquedaCursoExpEdu(Curso ExpEdu, String buscarExpEdu){
     ResultSet rs = null;   
     List<Curso>datosExpEdu = new ArrayList<>();
     String llenadoModuloCurso = "SELECT nrc, exp_educativa, "
             + "CONCAT_WS(' ',profesor.nombre, profesor.paterno, profesor.materno) "
             + "AS nombre_completo FROM curso INNER JOIN profesor ON curso.profesor = "
-            + "profesor.id_profesor WHERE exp_educativa=?;";
+            + "profesor.id_profesor WHERE curso.exp_educativa = '"+buscarExpEdu+"';";
     try {
       ps = (PreparedStatement) conexion.prepareStatement(llenadoModuloCurso);
-      ps.setString(1, ExpEdu.getExperienciaEducativa());
       rs = ps.executeQuery();
       
       while(rs.next()){
