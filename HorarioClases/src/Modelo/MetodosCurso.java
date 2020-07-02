@@ -8,6 +8,7 @@ import java.sql.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import Vista.ConsultaExpEdu;
+import java.util.*;
 
 public class MetodosCurso extends ConectarBD{
   private DefaultTableModel tablaResultados;
@@ -17,10 +18,6 @@ public class MetodosCurso extends ConectarBD{
     public MetodosCurso(DefaultTableModel tablaResultados, ConsultaExpEdu consultaExpEdu) {
         this.tablaResultados = tablaResultados;
         this.consultaExpEdu = consultaExpEdu;
-    }
-
-    MetodosCurso() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
   
@@ -50,49 +47,33 @@ public class MetodosCurso extends ConectarBD{
     }
   }
 
-  public boolean LlenarTablaCurso(Curso ExpEdu){
+  public List LlenarTablaCurso(Curso ExpEdu){
     PreparedStatement ps = null;
     ResultSet rs = null;
     Connection conexion = GetConnection();
-      
+    List<Curso>datosExpEdu = new ArrayList<>();
     String llenadoModuloCurso = "SELECT nrc, exp_educativa, "
             + "CONCAT_WS(\" \",profesor.nombre, profesor.paterno, profesor.materno) AS nombre_completo "
             + "FROM curso INNER JOIN profesor ON curso.profesor = profesor.id_profesor;";
-            
     
-    try {
+    try{
       ps = (PreparedStatement) conexion.prepareStatement(llenadoModuloCurso);
       rs = ps.executeQuery();
-      tablaResultados = new DefaultTableModel();
-      
       while(rs.next()){
-          filaParaResultados[0] = rs.getString("nrc");
-          filaParaResultados[1] = rs.getString("exp_educativa");
-          filaParaResultados[2] = ("nombre_completo");
-          tablaResultados.addRow(filaParaResultados);
-          
-          consultaExpEdu.tblExpEdu.setModel(tablaResultados);
-            TableColumn columnaNRC = consultaExpEdu.tblExpEdu.getColumn("NRC");
-            columnaNRC.setMaxWidth(75);
-            TableColumn columnaExpEdu = consultaExpEdu.tblExpEdu.getColumn("Experiencia Educativa");
-            TableColumn columnaProfesor = consultaExpEdu.tblExpEdu.getColumn("Profesor");
-          return true;
+          Curso curso = new Curso();
+          curso.setNrc(rs.getString(1));
+          curso.setNrc(rs.getString(2));
+          curso.setNrc(rs.getString(3));
+          datosExpEdu.add(curso);
       }
-      
-      return false;
-    } catch (SQLException e) {
-      System.err.println(e);
-      return false;
-    } finally {
-      try {
-        conexion.close();
-      } catch (SQLException e) {
-        System.err.println(e);
-      }
+    }catch(Exception e){
+    
     }
+    return datosExpEdu;    
+        
   }  
 
-  public  BusquedaCursoNRC(Curso ExpEdu){
+  public boolean BusquedaCursoNRC(Curso ExpEdu){
     PreparedStatement ps = null;
     ResultSet rs = null;
     Connection conexion = GetConnection();
