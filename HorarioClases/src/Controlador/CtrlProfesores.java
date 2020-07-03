@@ -28,7 +28,7 @@ public class CtrlProfesores implements ActionListener{
     MetodosProfesores metodosProfesores = new MetodosProfesores();
     Recipiente recipiente = new Recipiente();
     ConsultaProfesores consultaProfesores = new ConsultaProfesores();
-    DefaultTableModel modelo = new DefaultTableModel();
+    DefaultTableModel modeloSalon = new DefaultTableModel();
 
     public CtrlProfesores( ConsultaProfesores consultaProfesores ) {
         this.consultaProfesores = consultaProfesores;
@@ -51,7 +51,7 @@ public class CtrlProfesores implements ActionListener{
     }
     
     public void MostrarDatosExpEdu(JTable tblExpEdu){
-      modelo = (DefaultTableModel)tblExpEdu.getModel();
+      modeloSalon = (DefaultTableModel)tblExpEdu.getModel();
       @SuppressWarnings("unchecked")
       List<Recipiente>lista=metodosProfesores.BusquedaProfesor(recipiente, consultaProfesores.txtNombreProfesor.getText());
       Object[]object = new Object [8];
@@ -64,9 +64,9 @@ public class CtrlProfesores implements ActionListener{
         object[5] = lista.get(i).getDiaJueves();
         object[6] = lista.get(i).getDiaViernes();
         object[7] = lista.get(i).getDiaSabado();
-        modelo.addRow(object);
+        modeloSalon.addRow(object);
       }
-      consultaProfesores.tblHorarioProfesores.setModel(modelo);
+      consultaProfesores.tblHorarioProfesores.setModel(modeloSalon);
     }
     
 }

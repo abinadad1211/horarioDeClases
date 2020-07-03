@@ -120,10 +120,7 @@ public class ConsultaProfesores extends javax.swing.JInternalFrame {
 
         tblHorarioProfesores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "Experiencia Educativa", "NRC", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"

@@ -42,16 +42,16 @@ public class MetodosProfesores extends Modelo.ConectarBD{
       rs = ps.executeQuery();
       
       while(rs.next()){
-        Recipiente contenedor = new Recipiente();
-        contenedor.setNrc(rs.getString(1));
-        contenedor.setExperienciaEducativa(rs.getString(2));
-        contenedor.setDiaLunes(rs.getString(3));
-        contenedor.setDiaMartes(rs.getString(4));
-        contenedor.setDiaMiercoles(rs.getString(5));
-        contenedor.setDiaJueves(rs.getString(6));
-        contenedor.setDiaViernes(rs.getString(7));
-        contenedor.setDiaSabado(rs.getString(8));
-        datosProfesor.add(contenedor);
+        Recipiente contenedorProfesores = new Recipiente();
+        contenedorProfesores.setNrc(rs.getString(1));
+        contenedorProfesores.setNombreCompleto(rs.getString(2));
+        contenedorProfesores.setDiaLunes(rs.getString(3));
+        contenedorProfesores.setDiaMartes(rs.getString(4));
+        contenedorProfesores.setDiaMiercoles(rs.getString(5));
+        contenedorProfesores.setDiaJueves(rs.getString(6));
+        contenedorProfesores.setDiaViernes(rs.getString(7));
+        contenedorProfesores.setDiaSabado(rs.getString(8));
+        datosProfesor.add(contenedorProfesores);
       }
     } catch (SQLException e) {
       System.err.println(e);

@@ -4,7 +4,7 @@ package Modelo;
 public class Recipiente{
     
     protected String nombreCompleto;
-    protected String matricula;
+    protected String idProfesor;
     protected String experienciaEducativa;
     protected String diaLunes;
     protected String diaMartes;
@@ -36,12 +36,12 @@ public class Recipiente{
         this.nombreCompleto = nombreCompleto;
     }
 
-    public String getMatricula() {
-        return matricula;
+    public String getIdProfesor() {
+        return idProfesor;
     }
 
-    public void setMatricula(String matricula) {
-        this.matricula = matricula;
+    public void setIdProfesor(String idProfesor) {
+        this.idProfesor = idProfesor;
     }
 
     public String getExperienciaEducativa() {
