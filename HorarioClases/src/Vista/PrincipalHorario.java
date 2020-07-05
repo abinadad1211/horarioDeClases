@@ -225,7 +225,7 @@ public class PrincipalHorario extends javax.swing.JFrame {
       .addGroup(pnlBarraLayout.createSequentialGroup()
         .addContainerGap()
         .addComponent(lblCerrar)
-        .addContainerGap(19, Short.MAX_VALUE))
+        .addContainerGap(23, Short.MAX_VALUE))
     );
 
     pnlhorario.setBackground(new java.awt.Color(255, 255, 255));
@@ -268,9 +268,9 @@ public class PrincipalHorario extends javax.swing.JFrame {
       .addGroup(layout.createSequentialGroup()
         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
           .addGroup(layout.createSequentialGroup()
-            .addComponent(pnlBarra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGap(44, 44, 44)
             .addComponent(pnlhorario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+          .addComponent(pnlBarra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
           .addComponent(pblNavegacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         .addGap(5, 5, 5))
     );
@@ -317,13 +317,13 @@ public class PrincipalHorario extends javax.swing.JFrame {
     private void btnHorarioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHorarioMousePressed
         // TODO add your handling code here:
         CrearHorario Opcion1  = new CrearHorario();
-        //ConsultaExpEdu Opcion3  = new ConsultaExpEdu();
+        //ConsultaExpEdu Opcion3  = new FrmCurso();
         pnlEscritorio.add(Opcion1);
         Opcion1.show();
     }//GEN-LAST:event_btnHorarioMousePressed
     
     private void btnExpEduMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExpEduMousePressed
-        ConsultaExpEdu internalExpEdu = new ConsultaExpEdu();
+        FrmCurso internalExpEdu = new FrmCurso();
         BasicInternalFrameUI bi = (BasicInternalFrameUI)internalExpEdu.getUI();
         bi.setNorthPane(null);
         pnlEscritorio.add(internalExpEdu);

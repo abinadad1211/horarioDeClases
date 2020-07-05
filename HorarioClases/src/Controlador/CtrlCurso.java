@@ -9,11 +9,9 @@ import javax.swing.JTable;
 import javax.swing.table.*;
 
 public class CtrlCurso implements ActionListener{
-    
     MetodosCurso metodosCurso = new MetodosCurso();
     Curso curso = new Curso();
-    ConsultaExpEdu consultaExpEdu = new ConsultaExpEdu();
-    String encabezadosDeTabla[] = {"NRC","Experiencia Educativa","Profesor"};
+    ConsultaExpEdu consultaExpEdu = new FrmCurso();
     DefaultTableModel modelo = new DefaultTableModel();
 
     public CtrlCurso(ConsultaExpEdu consultaExpEdu){

@@ -4,8 +4,10 @@ package Modelo;
 import static Modelo.ConectarBD.GetConnection;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
-import java.sql.*;
-import java.util.*;
+import java.sql.SQLException;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MetodosCurso extends ConectarBD{
   PreparedStatement ps = null;

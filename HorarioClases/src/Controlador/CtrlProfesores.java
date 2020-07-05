@@ -11,7 +11,7 @@ import Modelo.MetodosProfesores;
 import Modelo.Profesor;
 import Modelo.Recipiente;
 import Modelo.Reservacion;
-import Vista.ConsultaExpEdu;
+import Vista.FrmCurso;
 import Vista.ConsultaProfesores;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

@@ -10,13 +10,13 @@ import java.util.List;
 
 public class MetodosProfesores extends Modelo.ConectarBD{
   PreparedStatement ps = null;
-  Connection conexion = GetConnection();
+  Connection conexionBD = GetConnection();
     
     public List BusquedaProfesor(Recipiente recipiente, String buscarProfesor){
     ResultSet rs = null;   
     List<Recipiente>datosProfesor = new ArrayList<>();
-    String llenadoModuloProfesor = "SELECT nrc\n" +
-        "   , exp_educativa\n" +
+    String llenadoModuloProfesor = "SELECT exp_educativa\n" +
+        "   , nrc\n" +
         "   , GROUP_CONCAT(LUNES) AS Lunes\n" +
         "   , GROUP_CONCAT(MARTES) AS Martes\n" +
         "   , GROUP_CONCAT(MIERCOLES) AS Miercoles\n" +
@@ -38,13 +38,13 @@ public class MetodosProfesores extends Modelo.ConectarBD{
 "       WHERE CONCAT_WS(' ',profesor.nombre, profesor.paterno, profesor.materno) LIKE '%"+buscarProfesor+"%') AS TablaProfesores\n" +
 "	GROUP BY nrc;";
     try {
-      ps = (com.mysql.jdbc.PreparedStatement) conexion.prepareStatement(llenadoModuloProfesor);
+      ps = (com.mysql.jdbc.PreparedStatement) conexionBD.prepareStatement(llenadoModuloProfesor);
       rs = ps.executeQuery();
       
       while(rs.next()){
         Recipiente contenedorProfesores = new Recipiente();
-        contenedorProfesores.setNrc(rs.getString(1));
-        contenedorProfesores.setNombreCompleto(rs.getString(2));
+        contenedorProfesores.setExperienciaEducativa(rs.getString(1));
+        contenedorProfesores.setNrc(rs.getString(2));
         contenedorProfesores.setDiaLunes(rs.getString(3));
         contenedorProfesores.setDiaMartes(rs.getString(4));
         contenedorProfesores.setDiaMiercoles(rs.getString(5));
