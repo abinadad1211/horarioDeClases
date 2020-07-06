@@ -40,7 +40,7 @@ public class CtrlReservacion implements ActionListener{
     public void MostrarDatosExpEdu(JTable tblExpEdu){
       modeloReservacion = (DefaultTableModel)tblExpEdu.getModel();
       @SuppressWarnings("unchecked")
-      List<Recipiente>lista=metodosReservacion.BusquedaProfesor(recipiente, consultaReservacion.cmbSalon.getSelectedItem().toString());
+      List<Recipiente>lista=metodosReservacion.BusquedaAula(recipiente, consultaReservacion.cmbSalon.getSelectedItem().toString());
       Object[]object = new Object [8];
       for (int i = 0; i < lista.size(); i++) {
         object[0] = lista.get(i).getExperienciaEducativa();

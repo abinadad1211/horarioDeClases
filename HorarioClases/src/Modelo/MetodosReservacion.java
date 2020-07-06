@@ -7,16 +7,12 @@ import static Modelo.ConectarBD.GetConnection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumn;
-
-
 
 public class MetodosReservacion extends ConectarBD {
     PreparedStatement ps = null;
     Connection conexion = GetConnection();
     
-    public List BusquedaProfesor(Recipiente recipiente, String buscarSalon){
+    public List BusquedaAula(Recipiente recipiente, String buscarSalon){
     ResultSet rs = null;   
     List<Recipiente>datosSalon = new ArrayList<>();
     String llenadoModuloSalon = "SELECT idprofesor\n" +

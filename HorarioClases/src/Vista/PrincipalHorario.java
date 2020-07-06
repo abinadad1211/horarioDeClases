@@ -323,7 +323,7 @@ public class PrincipalHorario extends javax.swing.JFrame {
     }//GEN-LAST:event_btnHorarioMousePressed
     
     private void btnExpEduMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExpEduMousePressed
-        FrmCurso internalExpEdu = new FrmCurso();
+        ConsultaExpEdu internalExpEdu = new ConsultaExpEdu();
         BasicInternalFrameUI bi = (BasicInternalFrameUI)internalExpEdu.getUI();
         bi.setNorthPane(null);
         pnlEscritorio.add(internalExpEdu);
